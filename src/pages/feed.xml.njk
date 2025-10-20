@@ -1,0 +1,14 @@
+---
+permalink: "feed.xml"
+eleventyExcludeFromCollections: true
+---
+{% set posts = collections.post | reverse | slice(0, 20) %}
+{% from "@11ty/eleventy-plugin-rss" import rssFeed, rssFeedItem %}
+{{ rssFeed("VulpineMSP Blog", "https://vulpinemsp.com/", "Latest posts") }}
+{% for post in posts %}
+  {{ rssFeedItem(post, {
+    title: post.data.title,
+    permalink: "https://vulpinemsp.com" + post.url
+  }) }}
+{% endfor %}
+</rss>

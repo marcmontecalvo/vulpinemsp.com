@@ -1,0 +1,45 @@
+{
+  "title": "Cybersecurity Insurance Readiness Assessment",
+  "sections": [
+    {
+      "title": "Access Control & Authentication",
+      "note": "Verify policies and technical controls for user access.",
+      "items": [
+        "Multi-Factor Authentication (MFA) is required for all remote access to the network.",
+        "MFA is enforced for all privileged user accounts (administrators).",
+        "MFA is enforced for all cloud-based services (Email, File Storage, etc.).",
+        "A strong password policy is documented and enforced via technical controls.",
+        "Access reviews are performed at least quarterly to remove stale accounts."
+      ]
+    },
+    {
+      "title": "Endpoint & Network Security",
+      "note": "Confirm deployment and configuration of security software.",
+      "items": [
+        "Endpoint Detection & Response (EDR) or Managed EDR (MDR) is deployed on all servers and workstations.",
+        "A managed, business-class firewall is in place with active security subscriptions.",
+        "Network traffic is segmented to isolate critical systems.",
+        "Email filtering solution is in place to block spam, phishing, and malicious attachments."
+      ]
+    },
+    {
+      "title": "Backup & Recovery",
+      "note": "Ensure backup integrity and recoverability.",
+      "items": [
+        "Critical data is backed up daily to a secure, off-site, or immutable location.",
+        "Backups are encrypted both in transit and at rest.",
+        "Full recovery tests are performed at least annually.",
+        "Backup systems are isolated from the primary network to protect against ransomware."
+      ]
+    },
+    {
+      "title": "Patching & Vulnerability Management",
+      "note": "Review update and scanning processes.",
+      "items": [
+        "A formal patch management process is in place for operating systems and third-party applications.",
+        "Critical security patches are applied within 30 days of release.",
+        "Regular vulnerability scanning (at least quarterly) is performed on internal and external assets."
+      ]
+    }
+  ]
+}

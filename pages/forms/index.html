@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Checklist Review</title>
+
+  <!-- Your base head include (Bootstrap, icons, etc.) -->
+  <!--#include virtual="/partials/head.html" -->
+
+  <style>
+    .subtle-gradient {
+      background: linear-gradient(180deg, #fff, #fafafa 60%, #fff 100%);
+    }
+
+    .checklist-item .status-col {
+      min-width: 220px;
+      flex: 0 0 220px;
+    }
+
+    .checklist-item .notes-col {
+      min-width: 260px;
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      display: flex;
+      flex-direction: column
+    }
+
+    section#about {
+      flex: 1 0 auto
+    }
+
+    footer {
+      flex-shrink: 0
+    }
+
+    /* Colored selects via classes (JS toggles these) */
+    .status-select {
+      transition: background-color .15s ease, border-color .15s ease, color .15s ease
+    }
+
+    .status-yes {
+      background-color: #198754 !important;
+      border-color: #198754 !important;
+      color: #fff !important
+    }
+
+    .status-no {
+      background-color: #dc3545 !important;
+      border-color: #dc3545 !important;
+      color: #fff !important
+    }
+
+    .status-needs {
+      background-color: #ffc107 !important;
+      border-color: #ffc107 !important;
+      color: #212529 !important
+    }
+
+    .status-na {
+      background-color: #6c757d !important;
+      border-color: #6c757d !important;
+      color: #fff !important
+    }
+
+    .status-unknown {
+      background-color: #0dcaf0 !important;
+      border-color: #0dcaf0 !important;
+      color: #212529 !important
+    }
+
+    .status-neutral {
+      background-color: #fff !important;
+      color: #212529 !important
+    }
+
+    .status-select:focus {
+      background-color: #fff !important;
+      color: #212529 !important;
+      border-color: #ced4da !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Secure-forms nav -->
+  <!--#include virtual="/partials/nav_secure_forms.html" -->
+
+  <section id="about" class="py-5 subtle-gradient">
+    <div class="container px-4">
+      <h1 class="mb-4">Checklist Review</h1>
+
+      <div class="row g-3 align-items-end">
+        <div class="col-12 col-md-6">
+          <label for="checklistSelect" class="form-label">Checklist Type</label>
+          <div class="d-flex align-items-center gap-3">
+            <select id="checklistSelect" class="form-select"></select>
+            <!-- Toolbar host for the Show-citations toggle -->
+            <div id="checklistToolbar"></div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="checklistDate" class="form-label">Date</label>
+          <input type="date" id="checklistDate" class="form-control" />
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label for="clientName" class="form-label">Client Name <span class="text-danger">*</span></label>
+          <input type="text" id="clientName" class="form-control" placeholder="Client name" />
+          <div class="invalid-feedback">This field is required.</div>
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="reviewerName" class="form-label">Reviewer <span class="text-danger">*</span></label>
+          <input type="text" id="reviewerName" class="form-control" placeholder="Your name" />
+          <div class="invalid-feedback">This field is required.</div>
+        </div>
+      </div>
+
+      <div id="checklistContainer" class="mt-4"></div>
+
+      <div class="mt-3 d-flex gap-2">
+        <button id="resetFormBtn" class="btn btn-outline-danger">Reset</button>
+        <button id="fillBtn" class="btn btn-secondary">Test Fill</button>
+        <button id="exportPdfBtn" class="btn btn-primary">Export PDF</button>
+        <button id="exportJsonBtn" class="btn btn-outline-primary">Export JSON</button>
+        <button id="exportTxtBtn" class="btn btn-outline-primary">Export TXT</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <!--#include virtual="/partials/footer.html" -->
+
+  <!-- jsPDF for PDF export -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+  <!-- Split modules (order matters) -->
+  <script src="./js/ui.js"></script>
+  <script src="./js/builder.js"></script>
+  <script src="./js/fill.js"></script>
+  <script src="./js/export_data.js"></script>
+  <script src="./js/export_pdf.js"></script>
+  <script src="./js/reset.js"></script>
+  <script src="./js/filters.js"></script>
+</body>
+
+</html>

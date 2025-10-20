@@ -1,0 +1,310 @@
+/* ===========================
+   custom.css - Vulpine Solutions
+   =========================== */
+
+
+:root {
+    /* Brand Colors */
+    --color-blue-dark: #1b2a41;
+    --color-orange: #e27c25;
+
+    /* Standard Warnings And Things */
+    --color-accent: #f6c344;
+    --color-success: #1fd884;
+    --color-danger: #ed254e;
+
+    /* Neutrals */
+    --color-dark: #162136;
+    --color-light: #f9fafb;
+    --color-gray: #949cac;
+    --color-white: #fff;
+
+    /* Optional extras */
+    --color-info: #30bcf2;
+    --color-warning: #f7b32b;
+}
+
+footer {
+    color: var(--color-light);
+}
+
+.navbar-title {
+    font-size: 2rem;
+    /* or any value you want */
+    font-weight: bold;
+}
+
+.navbar-nav {
+    font-size: 1.4rem;
+    /* or any value you want */
+}
+
+/* Navbar background and sticky */
+.navbar .btn-get-started {
+    background-color: var(--color-orange);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 0.5rem 1.25rem;
+    box-shadow: 0 2px 8px 0 rgba(253, 126, 20, 0.10);
+    letter-spacing: 0.03em;
+}
+
+.navbar .btn-get-started:hover,
+.navbar .btn-get-started:focus {
+    background-color: var(--color-orange);
+    color: #fff;
+}
+
+/* Hero badge style */
+.badge-custom {
+    background: var(--color-orange);
+    color: #e7ecee;
+    border-radius: 999px;
+    padding: 0.5em 1em;
+    font-size: 1rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    box-shadow: 0 2px 10px 0 rgba(253, 126, 20, 0.07);
+}
+
+/* Hero headline and color */
+.hero-main-title {
+    font-weight: 800;
+    font-size: 2.3rem;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    color: #162136;
+}
+
+@media (min-width: 992px) {
+    .hero-main-title {
+        font-size: 2.9rem;
+    }
+}
+
+/* Icon row tweaks */
+.icon-row .bi,
+.icon-row svg {
+    font-size: 1.5rem;
+    color: var(--color-orange);
+    margin-right: 0.5em;
+    vertical-align: middle;
+}
+
+/* Service card icons */
+.service-icon {
+    font-size: 2.2rem;
+    color: var(--color-orange);
+}
+
+.contact-icon {
+    color: var(--color-orange);
+}
+
+.other-icon {
+    font-size: 2.2rem;
+    color: var(--color-orange);
+}
+
+/* Stats card */
+.stat-card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 16px 0 rgba(22, 33, 54, 0.07);
+    text-align: center;
+    padding: 1.25rem 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.stat-card .stat-value {
+    font-weight: 800;
+    color: var(--color-orange);
+    font-size: 2rem;
+}
+
+.stat-card .stat-label {
+    font-size: 1rem;
+    color: #7a859e;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+/* Contact form tweaks */
+#contactForm .form-control:focus {
+    box-shadow: 0 0 0 0.15rem rgba(16, 100, 234, .07);
+    border-color: var(--color-blue-dark);
+}
+
+.hero-content-box {
+    background: #fff;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px 0 rgba(22, 33, 54, 0.09);
+    padding-left: 2rem;
+    padding-right: 1.25rem;
+    padding-top: 1.5rem;
+    /* Optional: semi-transparent for overlay effect */
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.hero-bg {
+    background: url('../../assets/images/tampa_skyline_digital.png') top center/cover no-repeat;
+    position: relative;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+@media (min-width: 992px) {
+    .hero-bg {
+
+        /* match your box height */
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-stats-box {
+        margin-left: 2rem;
+    }
+
+    .hero-picture-box {
+        margin-left: 2rem;
+    }
+}
+
+.hero-stats-box {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px 0 rgba(22, 33, 54, 0.09);
+    padding: 1.5rem;
+    padding-bottom: .5rem;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Ensure the image has rounded corners and matches the .hero-content-box */
+.hero-picture-box img {
+    border-radius: 1.5rem;
+    display: block;
+    /* Helps with alignment and spacing */
+}
+
+.hero-picture-box {
+    position: relative;
+    /* Required for the pseudo-element to be positioned correctly */
+    overflow: hidden;
+    /* Hides any content that overflows the rounded corners */
+    border-radius: 1.5rem;
+    /* Match this to the image's border-radius */
+}
+
+.hero-picture-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Use a semi-transparent dark blue overlay */
+    background-color: var(--color-blue-dark);
+    opacity: 0.3;
+    /* Adjust the transparency as needed (0.05 to 0.3 works well) */
+    pointer-events: none;
+    /* Allows clicks to pass through to the image below */
+    border-radius: inherit;
+    /* Inherit the same rounded corners */
+}
+
+.subtle-gradient {
+    background: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14% 98%));
+}
+
+.saira-semibold {
+    font-family: "Saira", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.saira-semibold-italic {
+    font-family: "Saira", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: italic;
+    font-variation-settings:
+        "wdth" 100;
+}
+
+.btn-primary {
+    --bs-btn-color: #000;
+    --bs-btn-bg: #e27c25;
+    --bs-btn-border-color: #e27c25;
+    --bs-btn-hover-color: RGBA(var(--bs-primary-rgb));
+    --bs-btn-hover-bg: (var(--bs-white));
+    --bs-btn-hover-border-color: RGBA(var(--bs-primary-rgb));
+    --bs-btn-focus-shadow-rgb: 192, 105, 31;
+    --bs-btn-active-color: #000;
+    --bs-btn-active-bg: rgb(231.8, 150.2, 80.6);
+    --bs-btn-active-border-color: rgb(228.9, 137.1, 58.8);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #000;
+    --bs-btn-disabled-bg: #e27c25;
+    --bs-btn-disabled-border-color: #e27c25;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: #e27c25;
+    --bs-btn-border-color: #e27c25;
+    --bs-btn-hover-color: #000;
+    --bs-btn-hover-bg: #e27c25;
+    --bs-btn-hover-border-color: #e27c25;
+    --bs-btn-focus-shadow-rgb: 226, 124, 37;
+    --bs-btn-active-color: #000;
+    --bs-btn-active-bg: #e27c25;
+    --bs-btn-active-border-color: #e27c25;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #e27c25;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #e27c25;
+    --bs-gradient: none;
+}
+
+.test {
+    /*RGBA(var(--bs-secondary-rgb)*/
+
+    --bs-primary-rgb: rgb(226, 124, 37);
+    --bs-secondary-rgb: rgb(62, 92, 118);
+    --bs-success-rgb: rgb(63, 163, 77);
+    --bs-info-rgb: rgb(168, 196, 224);
+    --bs-warning-rgb: rgb(247, 201, 72);
+    --bs-danger-rgb: rgb(229, 57, 53);
+    --bs-light-rgb: rgb(244, 244, 244);
+    --bs-dark-rgb: rgb(27, 42, 65);
+}
+
+/* Change open accordion background */
+.accordion-button:not(.collapsed) {
+    background-color: #e27c25;
+    /* replace with your desired color */
+    color: #000;
+    /* adjust text color for contrast */
+}
+
+/* Optional: change the hover/focus color too */
+.accordion-button:not(.collapsed):focus,
+.accordion-button:not(.collapsed):hover {
+    background-color: #e27c25;
+    /* slightly darker/lighter than above */
+}
+
+/* Remove focus glow from accordion buttons */
+.accordion-button:focus {
+    border-color: #ccc;
+    /* fallback border color */
+    box-shadow: none;
+}

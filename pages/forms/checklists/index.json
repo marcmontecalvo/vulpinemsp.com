@@ -1,0 +1,26 @@
+{
+  "lists": [
+    {
+      "id": "hipaa-review",
+      "name": "HIPAA Review",
+      "file": "hipaa-review.json"
+    },
+    {
+      "id": "cyberins-review",
+      "name": "Cyber Insurance Review",
+      "file": "cyberins-review.json"
+    },
+    {
+      "name": "HIPAA - CO or Joint",
+      "file": "joint.json"
+    },
+    {
+      "name": "HIPAA - MSP Only",
+      "file": "msp.json"
+    },
+    {
+      "name": "HIPAA - Templates",
+      "file": "template_needed.json"
+    }
+  ]
+}

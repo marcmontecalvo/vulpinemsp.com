@@ -1,0 +1,520 @@
+{
+    "schema_version": "1.1",
+    "title": "Controls for Officer or Joint Responsibility (CE/Officer or CE/Officer + MSP)",
+    "description": "Use in web checklist. Items can be grouped by category. Citations hidden in UI by default but included in export/report.",
+    "ui": {
+        "show_citations_default": false,
+        "allow_user_toggle_citations": true,
+        "group_by": "category_id"
+    },
+    "categories": [
+        {
+            "id": "P1",
+            "name": "Privacy Rule and Patient Rights"
+        },
+        {
+            "id": "P2",
+            "name": "Interoperability & Information Blocking"
+        },
+        {
+            "id": "P3",
+            "name": "Uses & Disclosures of PHI"
+        },
+        {
+            "id": "A1",
+            "name": "Administrative Safeguards"
+        },
+        {
+            "id": "B1",
+            "name": "Breach Notification Rule"
+        },
+        {
+            "id": "P4",
+            "name": "Physical Safeguards"
+        },
+        {
+            "id": "T1",
+            "name": "Technical Safeguards"
+        },
+        {
+            "id": "C2",
+            "name": "Communication Policies"
+        }
+    ],
+    "items": [
+        {
+            "id": "P1-AMD",
+            "item": "Patient Right to Amend — Documented process for patients to request amendments to their PHI.",
+            "category_id": "P1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.526",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "policy",
+                "workflow"
+            ],
+            "frequency": "on_request"
+        },
+        {
+            "id": "P1-ACCT",
+            "item": "Patient Right to an Accounting of Disclosures — Documented process to track and provide an accounting of PHI disclosures.",
+            "category_id": "P1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.528",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "policy",
+                "log"
+            ],
+            "frequency": "on_request"
+        },
+        {
+            "id": "P1-RSTR",
+            "item": "Patient Right to Request Restrictions — Documented process for patients to request restrictions; required agreement for out-of-pocket services.",
+            "category_id": "P1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.522",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "policy",
+                "workflow"
+            ]
+        },
+        {
+            "id": "P1-CONF",
+            "item": "Patient Right to Request Confidential Communications — Alternative means or locations.",
+            "category_id": "P1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.522",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "policy",
+                "form"
+            ]
+        },
+        {
+            "id": "P2-IB-POL",
+            "item": "Information Blocking Compliance Policy — Ensure EHI is not inappropriately blocked from access, exchange, or use.",
+            "category_id": "P2",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 171",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "policy",
+                "training"
+            ]
+        },
+        {
+            "id": "P2-PORTAL",
+            "item": "Patient Portal/API Access — Ensure patient access to EHI via portal/FHIR API without special effort or charge.",
+            "category_id": "P2",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 171",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "policy",
+                "config",
+                "screenshot"
+            ]
+        },
+        {
+            "id": "P2-EXCEPT",
+            "item": "Reasonable and Necessary Exceptions — Staff trained on the eight information blocking exceptions and documentation.",
+            "category_id": "P2",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 171",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "policy",
+                "training"
+            ]
+        },
+        {
+            "id": "P3-AUTH",
+            "item": "Authorization Requirements — Written patient authorization where required (psychotherapy notes, marketing, sale, research).",
+            "category_id": "P3",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.508",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "policy",
+                "form"
+            ]
+        },
+        {
+            "id": "P3-MKT",
+            "item": "Marketing Restrictions — No PHI marketing without authorization.",
+            "category_id": "P3",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.514",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "policy"
+            ]
+        },
+        {
+            "id": "P3-SALE",
+            "item": "Sale of PHI Prohibition — No sale of PHI without authorization.",
+            "category_id": "P3",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.502",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "policy"
+            ]
+        },
+        {
+            "id": "P3-FUND",
+            "item": "Fundraising Communications — Limited PHI with opt-out (if applicable).",
+            "category_id": "P3",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.514",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "policy",
+                "form"
+            ]
+        },
+        {
+            "id": "A1-OFFICERS",
+            "item": "Designated Officers — Designate and document Privacy Officer and Security Officer.",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "policy",
+                "designation_form"
+            ]
+        },
+        {
+            "id": "A1-RISK",
+            "item": "Security Management Process — Risk analysis and risk management plan documented and reviewed annually.",
+            "category_id": "A1",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "policy",
+                "report"
+            ],
+            "frequency": "annual"
+        },
+        {
+            "id": "A1-WFS",
+            "item": "Workforce Security — Authorization, supervision, and prompt isolation on termination/role change.",
+            "category_id": "A1",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "policy",
+                "workflow",
+                "ticketing_log"
+            ]
+        },
+        {
+            "id": "A1-IAM",
+            "item": "Information Access Management — RBAC aligned to Minimum Necessary; CO defines roles, MSP implements.",
+            "category_id": "A1",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "A1-MINN",
+            "item": "Minimum Necessary Standard — Organization-wide enforcement.",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.502",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "A1-TRAIN",
+            "item": "Security Awareness & Training — Annual training incl. phishing/social engineering.",
+            "category_id": "A1",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true,
+            "frequency": "annual"
+        },
+        {
+            "id": "A1-CONT",
+            "item": "Contingency Plan — Backup, DR, emergency mode ops documented and tested; include test results.",
+            "category_id": "A1",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true,
+            "frequency": "annual"
+        },
+        {
+            "id": "A1-BAA",
+            "item": "Business Associate Agreements — Execute BAAs and maintain inventory.",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "A1-BAA-SUB",
+            "item": "Business Associate Subcontractor Oversight — Verify subcontractor agreements exist.",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "A1-SANCT",
+            "item": "Sanction Policy — Define workforce sanctions for violations.",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "A1-MITIG",
+            "item": "Mitigation Procedures — Procedures to mitigate harmful effects of impermissible uses/disclosures.",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "A1-IRP",
+            "item": "Incident Response Procedures — Define security incident procedures and breach workflow; tested.",
+            "category_id": "A1",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "A1-LOGREV",
+            "item": "Information System Activity Review — Periodic review of audit logs and access reports.",
+            "category_id": "A1",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true,
+            "frequency": "monthly"
+        },
+        {
+            "id": "A1-EVAL",
+            "item": "Evaluation — Periodic technical and non-technical evaluation of safeguards.",
+            "category_id": "A1",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true,
+            "frequency": "annual"
+        },
+        {
+            "id": "A1-DOCS",
+            "item": "Documentation & Policy Availability — Maintain written policies and ensure workforce access.",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "A1-RET",
+            "item": "Documentation Retention — Retain HIPAA documentation for 6 years.",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "B1-RISK",
+            "item": "Breach Risk Assessment Process — Four-factor methodology documented.",
+            "category_id": "B1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.402",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "B1-TIME",
+            "item": "Notification Timelines and Procedures — Individuals (≤60 days), HHS/media as required.",
+            "category_id": "B1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.404, 406, 408",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "B1-MIT",
+            "item": "Breach Mitigation Steps — Document remediation activities.",
+            "category_id": "B1",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "B1-LOG",
+            "item": "Breach Documentation & Retention — Log all breaches/incidents for 6 years.",
+            "category_id": "B1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.402",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "P4-FAC",
+            "item": "Facility Access Controls — Policies to limit physical access to ePHI systems.",
+            "category_id": "P4",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.310",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "P4-WU",
+            "item": "Workstation Use — Policies for secure workstation use.",
+            "category_id": "P4",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.310",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "P4-WSSEC",
+            "item": "Workstation Security — Physical safeguards (privacy screens, cable locks, placement).",
+            "category_id": "P4",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 164.310",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "P4-DMC",
+            "item": "Device & Media Controls — Disposal, reuse, transport with inventory and destruction logs.",
+            "category_id": "P4",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 164.310",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "T1-EA",
+            "item": "Emergency Access Procedure — Break-glass process with logging and approvals.",
+            "category_id": "T1",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 164.312",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "T1-LOGRET",
+            "item": "Audit Log Retention — Defined retention periods; centralized storage enforced.",
+            "category_id": "T1",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 164.312",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "C2-FAXEMAIL",
+            "item": "Secure Fax and Email Policies — Encrypted email and secure fax practices.",
+            "category_id": "C2",
+            "responsibility": "Joint",
+            "joint_roles": [
+                "Officer",
+                "MSP"
+            ],
+            "citation": "45 CFR § 164.312, 164.502",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "C2-SOC",
+            "item": "Social Media and Patient Communication Policy — Staff guidance incl. patient-requested unsecured email considerations.",
+            "category_id": "C2",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.530",
+            "show_citation": false,
+            "report_include": true
+        }
+    ]
+}

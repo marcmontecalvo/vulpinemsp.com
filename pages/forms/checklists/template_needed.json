@@ -1,0 +1,285 @@
+{
+    "schema_version": "1.1",
+    "title": "Controls Suitable for Template Creation",
+    "description": "Standardized policy/procedure templates clients can adopt. All items also appear in the CO/Joint list.",
+    "ui": {
+        "show_citations_default": false,
+        "allow_user_toggle_citations": true,
+        "group_by": "category_id"
+    },
+    "categories": [
+        {
+            "id": "P2",
+            "name": "Interoperability & Information Blocking"
+        },
+        {
+            "id": "P3",
+            "name": "Uses & Disclosures of PHI"
+        },
+        {
+            "id": "A1",
+            "name": "Administrative Safeguards"
+        },
+        {
+            "id": "B1",
+            "name": "Breach Notification Rule"
+        },
+        {
+            "id": "P4",
+            "name": "Physical Safeguards"
+        },
+        {
+            "id": "C2",
+            "name": "Communication Policies"
+        }
+    ],
+    "items": [
+        {
+            "id": "P2-EXCEPT-TPL",
+            "item": "Reasonable and Necessary Exceptions — Policy and training on the eight exceptions to information blocking, with documentation workflow.",
+            "category_id": "P2",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 171",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "policy+training",
+                "filename_hint": "info_blocking_exceptions_policy"
+            }
+        },
+        {
+            "id": "P3-AUTH-TPL",
+            "item": "Authorization Requirements — Authorization form and policy (psychotherapy notes, marketing, sale, research).",
+            "category_id": "P3",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.508",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "form+policy",
+                "filename_hint": "phi_authorization"
+            }
+        },
+        {
+            "id": "P3-MKT-TPL",
+            "item": "Marketing Restrictions Policy.",
+            "category_id": "P3",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.514",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "policy",
+                "filename_hint": "marketing_restrictions"
+            }
+        },
+        {
+            "id": "P3-SALE-TPL",
+            "item": "Sale of PHI Prohibition Policy.",
+            "category_id": "P3",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.502",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "policy",
+                "filename_hint": "sale_of_phi_prohibition"
+            }
+        },
+        {
+            "id": "P3-FUND-TPL",
+            "item": "Fundraising Communications Policy with opt-out language (if applicable).",
+            "category_id": "P3",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.514",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "policy+form",
+                "filename_hint": "fundraising_opt_out"
+            }
+        },
+        {
+            "id": "A1-OFFICERS-TPL",
+            "item": "Designation of Privacy Officer and Security Officer (policy + designation form).",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "policy+form",
+                "filename_hint": "officer_designations"
+            }
+        },
+        {
+            "id": "A1-MINN-TPL",
+            "item": "Minimum Necessary Standard Policy.",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.502",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "policy",
+                "filename_hint": "minimum_necessary"
+            }
+        },
+        {
+            "id": "A1-BAA-TPL",
+            "item": "Business Associate Agreement management — BAA template and inventory procedure.",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "template+procedure",
+                "filename_hint": "baa_and_inventory"
+            }
+        },
+        {
+            "id": "A1-SANCT-TPL",
+            "item": "Sanction Policy.",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "policy",
+                "filename_hint": "sanctions"
+            }
+        },
+        {
+            "id": "A1-MITIG-TPL",
+            "item": "Mitigation Procedures (non-technical).",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "procedure",
+                "filename_hint": "mitigation"
+            }
+        },
+        {
+            "id": "A1-IRP-TPL",
+            "item": "Incident Response & Breach Notification Procedures (non-technical workflow).",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "procedure",
+                "filename_hint": "incident_response_and_breach"
+            }
+        },
+        {
+            "id": "A1-DOCS-TPL",
+            "item": "Documentation & Policy Availability Policy.",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "policy",
+                "filename_hint": "policy_availability"
+            }
+        },
+        {
+            "id": "A1-RET-TPL",
+            "item": "Documentation Retention Policy (6 years).",
+            "category_id": "A1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.308",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "policy",
+                "filename_hint": "retention_6_years"
+            }
+        },
+        {
+            "id": "B1-RISK-TPL",
+            "item": "Breach Risk Assessment Worksheet — Four-factor methodology.",
+            "category_id": "B1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.402",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "worksheet+procedure",
+                "filename_hint": "breach_risk_assessment"
+            }
+        },
+        {
+            "id": "B1-TIME-TPL",
+            "item": "Breach Notification Timeline Checklist.",
+            "category_id": "B1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.404, 406, 408",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "checklist",
+                "filename_hint": "breach_timeline"
+            }
+        },
+        {
+            "id": "B1-LOG-TPL",
+            "item": "Breach/Incident Log (6-year retention).",
+            "category_id": "B1",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.402",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "log",
+                "filename_hint": "breach_log"
+            }
+        },
+        {
+            "id": "P4-WU-TPL",
+            "item": "Workstation Use Policy (clean desk, screen lock, visitor).",
+            "category_id": "P4",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.310",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "policy",
+                "filename_hint": "workstation_use"
+            }
+        },
+        {
+            "id": "C2-FAXEMAIL-TPL",
+            "item": "Secure Email & Fax Policy.",
+            "category_id": "C2",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.312, 164.502",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "policy",
+                "filename_hint": "secure_email_and_fax"
+            }
+        },
+        {
+            "id": "C2-SOC-TPL",
+            "item": "Social Media & Electronic Patient Communication Policy.",
+            "category_id": "C2",
+            "responsibility": "Officer",
+            "citation": "45 CFR § 164.530",
+            "show_citation": false,
+            "report_include": true,
+            "template": {
+                "type": "policy",
+                "filename_hint": "social_media_and_patient_comm"
+            }
+        }
+    ]
+}

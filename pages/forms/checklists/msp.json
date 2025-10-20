@@ -1,0 +1,242 @@
+{
+    "schema_version": "1.1",
+    "title": "Controls for MSP Only Responsibility (Technical Implementation)",
+    "description": "Technical build/operate items for MSP. Citations hidden in UI; always included in report/export.",
+    "ui": {
+        "show_citations_default": false,
+        "allow_user_toggle_citations": true,
+        "group_by": "category_id"
+    },
+    "categories": [
+        {
+            "id": "T1",
+            "name": "Technical Safeguards"
+        },
+        {
+            "id": "OPS",
+            "name": "Operations & Monitoring"
+        },
+        {
+            "id": "IAM",
+            "name": "Identity & Access"
+        },
+        {
+            "id": "NET",
+            "name": "Network & Endpoint Security"
+        },
+        {
+            "id": "BCDR",
+            "name": "Backup, DR, Continuity"
+        },
+        {
+            "id": "IR",
+            "name": "Incident Response"
+        },
+        {
+            "id": "COMM",
+            "name": "Communication Infrastructure"
+        }
+    ],
+    "items": [
+        {
+            "id": "T1-TLS",
+            "item": "Transmission Security — Encryption in transit (TLS/VPN) for ePHI sent over open networks.",
+            "category_id": "T1",
+            "responsibility": "MSP",
+            "citation": "45 CFR § 164.312",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "config",
+                "screenshot",
+                "scan"
+            ]
+        },
+        {
+            "id": "T1-REST",
+            "item": "Encryption at Rest — Encrypt endpoints, servers, and databases (BitLocker/FileVault/db).",
+            "category_id": "T1",
+            "responsibility": "MSP",
+            "citation": "45 CFR § 164.312",
+            "show_citation": false,
+            "report_include": true,
+            "evidence_type": [
+                "config",
+                "key_escrow"
+            ],
+            "note": "Addressable in rule but required in practice."
+        },
+        {
+            "id": "T1-LOGOFF",
+            "item": "Automatic Logoff — Configure idle timeouts for systems/apps with ePHI.",
+            "category_id": "T1",
+            "responsibility": "MSP",
+            "citation": "45 CFR § 164.312",
+            "show_citation": false,
+            "report_include": true
+        },
+        {
+            "id": "OPS-RMM",
+            "item": "RMM monitoring, automated patching, and health checks.",
+            "category_id": "OPS",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "OPS-EDR",
+            "item": "Endpoint Detection & Response (EDR/AV) deployment and 24x7 monitoring.",
+            "category_id": "OPS",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "OPS-SIEM",
+            "item": "Identity Threat Detection & Response (ITDR) and SIEM onboarding and tuning.",
+            "category_id": "OPS",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "OPS-LOGPIPE",
+            "item": "Centralized log collection and retention per policy.",
+            "category_id": "OPS",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "OPS-REPORT",
+            "item": "Monthly service and security reporting.",
+            "category_id": "OPS",
+            "responsibility": "MSP",
+            "report_include": true,
+            "frequency": "monthly"
+        },
+        {
+            "id": "IAM-PROV",
+            "item": "Provisioning/deprovisioning workflows for users/devices (onboarding/termination).",
+            "category_id": "IAM",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "IAM-RBAC",
+            "item": "RBAC implementation per CO-defined roles.",
+            "category_id": "IAM",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "IAM-MFA",
+            "item": "MFA enforcement and conditional access.",
+            "category_id": "IAM",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "NET-FW",
+            "item": "Firewall config and maintenance; no inbound RDP exposure.",
+            "category_id": "NET",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "NET-VPN",
+            "item": "VPN or Zero Trust remote access enablement.",
+            "category_id": "NET",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "NET-DNS",
+            "item": "DNS filtering and WiFi segmentation (staff/guest/IoT).",
+            "category_id": "NET",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "NET-ENC",
+            "item": "Disk encryption enablement and escrow (BitLocker/FileVault).",
+            "category_id": "NET",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "NET-LOCK",
+            "item": "Screen lock and idle timeout policies via MDM/Intune.",
+            "category_id": "NET",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "BCDR-M365",
+            "item": "Microsoft 365 backup management (Exchange/OneDrive/SharePoint/Teams).",
+            "category_id": "BCDR",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "BCDR-SRV",
+            "item": "Server backups (direct-to-cloud or BDR) with encryption.",
+            "category_id": "BCDR",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "BCDR-TEST",
+            "item": "Quarterly test restores with documentation.",
+            "category_id": "BCDR",
+            "responsibility": "MSP",
+            "report_include": true,
+            "frequency": "quarterly"
+        },
+        {
+            "id": "BCDR-BG",
+            "item": "Emergency access (break-glass) technical setup with logging.",
+            "category_id": "BCDR",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "IR-ISOLATE",
+            "item": "Threat detection and isolation (endpoint quarantine, account resets).",
+            "category_id": "IR",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "IR-FOR",
+            "item": "Forensic data preservation (logs, artifacts) for Officer/legal teams.",
+            "category_id": "IR",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "IR-RANSOM",
+            "item": "Ransomware playbook execution for technical containment.",
+            "category_id": "IR",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "COMM-EMAIL",
+            "item": "Secure email configuration (encryption, SPF/DKIM/DMARC).",
+            "category_id": "COMM",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "COMM-FAX",
+            "item": "Secure fax solution deployment and maintenance.",
+            "category_id": "COMM",
+            "responsibility": "MSP",
+            "report_include": true
+        },
+        {
+            "id": "COMM-MDM",
+            "item": "Mobile device management (Intune/MDM) and app protection policies.",
+            "category_id": "COMM",
+            "responsibility": "MSP",
+            "report_include": true
+        }
+    ]
+}

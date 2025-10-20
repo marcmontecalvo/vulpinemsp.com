@@ -1,0 +1,77 @@
+{
+  "title": "HIPAA Compliance Onboarding Walk-Through",
+  "sections": [
+    {
+      "title": "Privacy Rule and Patient Rights",
+      "note": "Verify documentation of patient rights and privacy practices.",
+      "items": [
+        "Notice of Privacy Practices (NPP) — NPP is provided to patients and a signed acknowledgment is obtained and retained",
+        "Patient Right to Access — Documented process for patients to request, receive, and inspect their PHI",
+        "Patient Right to Amend — Documented process for patients to request amendments to their PHI",
+        "Patient Right to an Accounting of Disclosures — Documented process to track and provide an accounting of PHI disclosures"
+      ]
+    },
+    {
+      "title": "Administrative Safeguards",
+      "note": "Verify documentation and evidence for each safeguard.",
+      "items": [
+        "Security Management Process — Risk analysis & risk management plan documented",
+        "Assigned Security Responsibility — Designated security officer",
+        "Workforce Security — Access authorization & supervision in place",
+        "Information Access Management — Role-based access controls implemented and enforced",
+        "Minimum Necessary Standard — Policies and procedures to limit PHI access to the minimum necessary are implemented",
+        "Security Awareness & Training — Annual training completed for all staff",
+        "Contingency Plan — Data backup, disaster recovery, and emergency mode operation plans documented and tested periodically",
+        "Business Associate Agreements — BAAs executed for all vendors handling PHI; inventory maintained",
+        "Sanction Policy — Documented sanctions for workforce non-compliance",
+        "Incident Response Procedures — Security incident procedures and breach notification workflow defined and tested",
+        "Information System Activity Review — Routine review of audit logs, access reports, and security incident tracking",
+        "Workforce Clearance & Termination Procedures — Defined onboarding, access authorization, and prompt termination/role change procedures",
+        "Evaluation — Periodic technical and non-technical evaluation of HIPAA safeguards; updates tracked",
+        "Documentation & Policy Availability — Policies and procedures maintained in writing and available to workforce"
+      ]
+    },
+    {
+      "title": "Breach Notification Rule",
+      "note": "Verify procedures for identifying and reporting breaches of unsecured PHI.",
+      "items": [
+        "Breach Risk Assessment Process — Documented methodology to assess if an incident constitutes a reportable breach",
+        "Notification Timelines and Procedures — Clear understanding and documentation of timelines for notifying individuals, HHS, and media (if applicable)"
+      ]
+    },
+    {
+      "title": "Physical Safeguards",
+      "note": "Check server rooms, locked cabinets, and device disposal logs.",
+      "items": [
+        "Facility Access Controls — Policies to limit physical access to ePHI systems",
+        "Workstation Use — Policies for secure workstation use",
+        "Device & Media Controls — Disposal, reuse, and transport procedures for hardware with ePHI, including inventory of devices and secure data destruction logs",
+        "Workstation Security — Physical safeguards (privacy screens, cable locks, screen positioning) to limit viewing by unauthorized persons"
+      ]
+    },
+    {
+      "title": "Technical Safeguards",
+      "note": "Check system configurations and encryption certificates.",
+      "items": [
+        "Access Control — Unique user IDs for all system users",
+        "Audit Controls — Audit logging enabled and reviewed",
+        "Integrity — Protections against improper alteration/destruction of ePHI",
+        "Person/Entity Authentication — MFA or equivalent for system access where feasible",
+        "Transmission Security — Encryption in transit for ePHI sent over networks",
+        "Encryption at Rest — Encryption/decryption of ePHI on endpoints, servers, and databases (e.g., BitLocker/FileVault, database encryption)",
+        "Automatic Logoff — Session timeout/auto-logoff configured for systems and applications with ePHI",
+        "Emergency Access Procedure — Break-glass access process with logging and approvals",
+        "Audit Log Retention — Retention periods and centralized storage defined and enforced",
+        "Integrity Controls — Mechanisms to ensure ePHI is not improperly altered or destroyed (checksums, hashing, digital signatures)"
+      ]
+    },
+    {
+      "title": "Communication Policies",
+      "note": "Verify policies for modern communication channels.",
+      "items": [
+        "Secure Fax and Email Policies — Policies governing the secure transmission of PHI via fax and email",
+        "Social Media and Patient Communication Policy — Clear guidelines on staff use of social media and electronic communication with patients"
+      ]
+    }
+  ]
+}

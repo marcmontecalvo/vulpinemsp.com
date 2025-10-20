@@ -19,7 +19,7 @@ permalink: /blog/
           {% endif %}
           <div class="card-body">
             <h5 class="card-title">{{ post.data.title }}</h5>
-            <p class="card-text text-muted small mb-2">{{ post.date | date("MMMM d, yyyy") }}</p>
+            <p class="card-text text-muted small mb-2">{{ post.date | fmtDate }}</p>
             <p class="card-text">{{ post.data.summary | safe }}</p>
           </div>
           <div class="card-footer bg-transparent border-0">

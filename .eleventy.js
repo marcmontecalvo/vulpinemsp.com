@@ -3,10 +3,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy({ "src/public": "." });
 
-  // Ensure ALL Forms app assets are copied with original paths
-  // This maps src/pages/forms/main/** -> dist/pages/forms/main/**
-  eleventyConfig.addPassthroughCopy({ "src/pages/forms/main": "pages/forms/main" });
-
   // Friendly date filter used by post layout
   eleventyConfig.addFilter("fmtDate", function (value, locale = "en-US", options) {
     try {

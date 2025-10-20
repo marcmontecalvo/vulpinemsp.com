@@ -1,19 +1,21 @@
 ---
 layout: layout.njk
-pagination:
-  data: collections.post
-  size: 10
-  alias: posts
-permalink: "blog/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}"
-eleventyComputed:
-  title: "Blog{% if pagination.pageNumber > 0 %} – Page {{ pagination.pageNumber + 1 }}{% endif %}"
+title: Blog
+permalink: /blog/
 ---
-<h1>Blog</h1>
-<ul>
-  {% for post in posts | reverse %}
-  <li>
-    <a href="{{ post.url }}">{{ post.data.title }}</a>
-    <small> – {{ post.date | date("mmm-dd-yyyy") }}</small>
-  </li>
-  {% endfor %}
-</ul>
+
+<h1 class="fw-bold mb-4">Blog</h1>
+
+{% set posts = (collections.post or []) | reverse %}
+{% if posts | length == 0 %}
+  <p>No posts yet. Check back soon.</p>
+{% else %}
+  <ul class="list-unstyled">
+    {% for post in posts %}
+      <li class="mb-3">
+        <a class="fw-semibold" href="{{ post.url }}">{{ post.data.title }}</a>
+        <div class="text-secondary small">{{ post.date | fmtDate }}</div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

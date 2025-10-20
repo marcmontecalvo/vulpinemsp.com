@@ -4,19 +4,20 @@ eleventyExcludeFromCollections: true
 ---
 {% from "plugin-rss/shortcodes.njk" import rssFeed, rssFeedItem %}
 
-{# choose how many posts to include #}
+{# Limit to the most recent 20 posts #}
 {% set posts = collections.post | reverse | rssLimit(20) %}
 
 {{ rssFeed("https://vulpinemsp.com/", {
   title: "VulpineMSP Blog",
   description: "Latest posts from Vulpine Solutions",
   language: "en",
-  author: {
-    name: "Vulpine Solutions, LLC"
-  }
+  author: { name: "Vulpine Solutions, LLC" }
 }) }}
 
-{% for post of posts %}
-  {{ rssFeedItem(post, { title: post.data.title, permalink: "https://vulpinemsp.com" + post.url }) }}
+{% for post in posts %}
+  {{ rssFeedItem(post, {
+    title: post.data.title,
+    permalink: "https://vulpinemsp.com" + post.url
+  }) }}
 {% endfor %}
 </rss>

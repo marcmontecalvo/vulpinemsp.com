@@ -1,16 +1,13 @@
 ---
 layout: layout.njk
 ---
-{% extends "layout.njk" %}
-{% block content %}
 <section class="container my-5">
   <article class="mx-auto" style="max-width: 850px;">
     <h1 class="fw-bold mb-3">{{ title }}</h1>
-    <p class="text-muted">{{ date | date("MMMM d, yyyy") }}</p>
+    <p class="text-muted">{{ date | fmtDate }}</p>
     <hr>
     <div class="markdown-content">
       {{ content | safe }}
     </div>
   </article>
 </section>
-{% endblock %}

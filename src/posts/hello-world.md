@@ -4,11 +4,10 @@ title: "How to Create and Publish Blog Posts on VulpineMSP.com"
 date: 2025-10-20
 layout: layouts/post.njk
 permalink: blog/how-to-create-posts/
+summary: "A complete walkthrough for creating, formatting, and publishing new blog posts on Vulpine Solutions’ Cloudflare-hosted Eleventy blog."
 tags:
-
 - post
 - tutorial
-- internal summary: "A complete walkthrough for creating, formatting, and publishing new blog posts on Vulpine Solutions’ Cloudflare-hosted Eleventy blog."
 
 ---
 

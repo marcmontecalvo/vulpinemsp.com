@@ -1,0 +1,8 @@
+# Force correct MIME types for form app assets (defensive; Pages usually infers from extension)
+/pages/forms/main/js/*
+  Content-Type: application/javascript; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/pages/forms/main/css/*
+  Content-Type: text/css; charset=utf-8
+  Cache-Control: public, max-age=3600

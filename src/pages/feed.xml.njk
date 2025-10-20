@@ -2,13 +2,21 @@
 permalink: "feed.xml"
 eleventyExcludeFromCollections: true
 ---
-{% set posts = collections.post | reverse | slice(0, 20) %}
-{% from "@11ty/eleventy-plugin-rss" import rssFeed, rssFeedItem %}
-{{ rssFeed("VulpineMSP Blog", "https://vulpinemsp.com/", "Latest posts") }}
-{% for post in posts %}
-  {{ rssFeedItem(post, {
-    title: post.data.title,
-    permalink: "https://vulpinemsp.com" + post.url
-  }) }}
+{% from "plugin-rss/shortcodes.njk" import rssFeed, rssFeedItem %}
+
+{# choose how many posts to include #}
+{% set posts = collections.post | reverse | rssLimit(20) %}
+
+{{ rssFeed("https://vulpinemsp.com/", {
+  title: "VulpineMSP Blog",
+  description: "Latest posts from Vulpine Solutions",
+  language: "en",
+  author: {
+    name: "Vulpine Solutions, LLC"
+  }
+}) }}
+
+{% for post of posts %}
+  {{ rssFeedItem(post, { title: post.data.title, permalink: "https://vulpinemsp.com" + post.url }) }}
 {% endfor %}
 </rss>

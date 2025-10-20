@@ -3,7 +3,7 @@
     var VC = window.VC = window.VC || {};
     VC.state = VC.state || {};
     VC.config = VC.config || {
-        ROOT: "./checklists/",     // path to index.json + checklist files
+        ROOT: "/assets/forms/main/checklists/",
         DEBUG: false,
         ALLOW_ATTACH: true         // show "Attach evidence" buttons
     };

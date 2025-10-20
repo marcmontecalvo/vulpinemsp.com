@@ -3,6 +3,6 @@ layout: layout.njk
 ---
 <article class="prose">
   <h1>{{ title }}</h1>
-  <p><small>{{ date | date("PPP") }}</small></p>
+  <p><small>{{ date | fmtDate }}</small></p>
   {{ content | safe }}
 </article>

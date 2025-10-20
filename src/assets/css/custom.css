@@ -308,3 +308,14 @@ footer {
     /* fallback border color */
     box-shadow: none;
 }
+
+.markdown-content img {
+    max-width: 100%;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    transition: all 0.2s ease-in-out;
+}

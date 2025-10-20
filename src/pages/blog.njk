@@ -1,21 +1,32 @@
 ---
+title: "Vulpine Solutions Blog"
 layout: layout.njk
-title: Blog
 permalink: /blog/
 ---
 
-<h1 class="fw-bold mb-4">Blog</h1>
+<section class="container my-5">
+  <div class="text-center mb-5">
+    <h1 class="fw-bold">Insights from Vulpine Solutions</h1>
+    <p class="lead text-muted">Smart IT. Silent Security.</p>
+  </div>
 
-{% set posts = (collections.post or []) | reverse %}
-{% if posts | length == 0 %}
-  <p>No posts yet. Check back soon.</p>
-{% else %}
-  <ul class="list-unstyled">
-    {% for post in posts %}
-      <li class="mb-3">
-        <a class="fw-semibold" href="{{ post.url }}">{{ post.data.title }}</a>
-        <div class="text-secondary small">{{ post.date | fmtDate }}</div>
-      </li>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for post in collections.post | reverse %}
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0">
+          {% if post.data.image %}
+            <img src="{{ post.data.image }}" class="card-img-top" alt="{{ post.data.title }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ post.data.title }}</h5>
+            <p class="card-text text-muted small mb-2">{{ post.date | date("MMMM d, yyyy") }}</p>
+            <p class="card-text">{{ post.data.summary | safe }}</p>
+          </div>
+          <div class="card-footer bg-transparent border-0">
+            <a href="{{ post.url }}" class="btn btn-outline-primary btn-sm">Read More →</a>
+          </div>
+        </div>
+      </div>
     {% endfor %}
-  </ul>
-{% endif %}
+  </div>
+</section>

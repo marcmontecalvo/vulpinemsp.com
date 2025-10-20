@@ -52,12 +52,11 @@ export async function onRequestPost(ctx) {
             body: JSON.stringify(email),
         });
 
-        if (!r.ok) {
-            const detail = await r.text();
-            return cors(json({ ok: false, error: "Email send failed", detail }, 502), request);
-        }
-
-        return cors(json({ ok: true }), request);
+        const respText = await r.text();
+        console.log("RESEND status", r.status, respText,
+            (env.RESEND_API_KEY || "").slice(0, 7));
+        return cors(json({ ok: r.ok, status: r.status, body: respText }), request);
+        
     } catch (err) {
         return cors(json({ ok: false, error: "Upstream send error", detail: err.message }, 502), request);
     }

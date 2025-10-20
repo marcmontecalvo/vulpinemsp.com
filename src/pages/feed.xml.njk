@@ -6,7 +6,7 @@ eleventyExcludeFromCollections: true
 <rss version="2.0">
   <channel>
     <title>{{ "VulpineMSP Blog" | striptags | escape }}</title>
-    <link>https://vulpinemsp-com.pages.dev/</link>
+    <link>https://vulpinemsp.com/</link>
     <description>{{ "Latest posts from Vulpine Solutions" | striptags | escape }}</description>
     <language>en</language>
 
@@ -14,8 +14,8 @@ eleventyExcludeFromCollections: true
     {% for post in posts %}
       <item>
         <title>{{ (post.data.title or "Post") | striptags | escape }}</title>
-        <link>https://vulpinemsp-com.pages.dev{{ post.url }}</link>
-        <guid>https://vulpinemsp-com.pages.dev{{ post.url }}</guid>
+        <link>https://vulpinemsp.com{{ post.url }}</link>
+        <guid>https://vulpinemsp.com{{ post.url }}</guid>
         <pubDate>{{ post.date | date("ddd, DD MMM YYYY HH:mm:ss ZZ") }}</pubDate>
         <description><![CDATA[{{ post.templateContent | safe }}]]></description>
       </item>

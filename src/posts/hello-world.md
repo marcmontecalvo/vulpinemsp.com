@@ -136,7 +136,7 @@ Cloudflare Pages will automatically build and deploy the update.
 Check the live URL:
 
 ```
-https://vulpinemsp-com.pages.dev/blog/how-to-create-posts/
+https://vulpinemsp.com/blog/how-to-create-posts/
 ```
 
 ---

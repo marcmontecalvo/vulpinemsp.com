@@ -1,4 +1,6 @@
 // ~/functions/api/contact.js
+// Uses Resend email API instead of MailChannels.
+// Ensure RESEND_API_KEY is defined in Cloudflare Pages settings.
 
 export async function onRequestOptions({ request }) {
     return cors(new Response(null, { status: 204 }), request);
@@ -7,26 +9,16 @@ export async function onRequestOptions({ request }) {
 export async function onRequestPost(ctx) {
     const { request, env } = ctx;
 
-    // Parse body (JSON or form)
+    // Parse JSON body
     let data;
     try {
-        const ctype = request.headers.get("content-type") || "";
-        if (ctype.includes("application/json")) {
-            data = await request.json();
-        } else if (ctype.includes("application/x-www-form-urlencoded")) {
-            const form = await request.formData();
-            data = Object.fromEntries(form.entries());
-        } else {
-            data = await request.json(); // try JSON anyway
-        }
+        data = await request.json();
     } catch {
         return cors(json({ ok: false, error: "Invalid JSON body" }, 400), request);
     }
 
     const payload = normalizeData(data);
-
-    // Honeypot
-    if (payload.website) return cors(json({ ok: true }), request);
+    if (payload.website) return cors(json({ ok: true }), request); // honeypot
 
     // Validation
     for (const k of ["firstName", "lastName", "email", "message"]) {
@@ -36,49 +28,42 @@ export async function onRequestPost(ctx) {
         return cors(json({ ok: false, error: "Invalid email" }, 400), request);
     }
 
-    // Build email (MailChannels)
+    // Build email
     const subject = `Website contact: ${payload.firstName} ${payload.lastName}`;
     const textBody = buildTextBody(payload, request);
     const htmlBody = buildHtmlBody(payload, request);
 
-    const mailRequest = {
-        personalizations: [{ to: [{ email: env.CONTACT_TO }] }],
-        from: { email: env.CONTACT_FROM, name: env.SITE_NAME || "Website" },
-        reply_to: { email: payload.email, name: `${payload.firstName} ${payload.lastName}` },
+    const email = {
+        from: env.CONTACT_FROM || "noreply@vulpinemsp.com",
+        to: env.CONTACT_TO || "contact@vulpinemsp.com",
         subject,
-        content: [
-            { type: "text/plain", value: textBody },
-            { type: "text/html", value: htmlBody },
-        ],
+        reply_to: `${payload.firstName} ${payload.lastName} <${payload.email}>`,
+        text: textBody,
+        html: htmlBody,
     };
 
-    // Send with timeout
-    const controller = new AbortController();
-    const t = setTimeout(() => controller.abort(), 10000);
-
-    let sendRes;
     try {
-        sendRes = await fetch("https://api.mailchannels.net/tx/v1/send", {
+        const r = await fetch("https://api.resend.com/emails", {
             method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(mailRequest),
-            signal: controller.signal,
+            headers: {
+                "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(email),
         });
-    } catch {
-        clearTimeout(t);
-        return cors(json({ ok: false, error: "Upstream email service error" }, 502), request);
-    }
-    clearTimeout(t);
 
-    if (!sendRes.ok) {
-        const detail = await safeText(sendRes);
-        return cors(json({ ok: false, error: "Email send failed", detail }, 502), request);
-    }
+        if (!r.ok) {
+            const detail = await r.text();
+            return cors(json({ ok: false, error: "Email send failed", detail }, 502), request);
+        }
 
-    return cors(json({ ok: true }), request);
+        return cors(json({ ok: true }), request);
+    } catch (err) {
+        return cors(json({ ok: false, error: "Upstream send error", detail: err.message }, 502), request);
+    }
 }
 
-/** Helpers **/
+/** ---------- Helpers ---------- */
 function normalizeData(d = {}) {
     const get = (k) => (d[k] ?? "").toString().trim();
     return {
@@ -159,12 +144,4 @@ function cors(res, req) {
     headers.set("access-control-allow-headers", "content-type");
     headers.set("vary", "origin");
     return new Response(res.body, { status: res.status, headers });
-}
-
-async function safeText(r) {
-    try {
-        return await r.text();
-    } catch {
-        return "";
-    }
 }

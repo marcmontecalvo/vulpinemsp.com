@@ -1,6 +1,6 @@
 # VulpineMSP Blog Authoring & Management Guide
 
-This guide explains how to manage and extend the **Vulpine Solutions blog** hosted under [vulpinemsp-com.pages.dev](https://vulpinemsp-com.pages.dev/), built on **Eleventy (11ty)** and deployed through **Cloudflare Pages**.
+This guide explains how to manage and extend the **Vulpine Solutions blog** hosted under [vulpinemsp.com](https://vulpinemsp.com/), built on **Eleventy (11ty)** and deployed through **Cloudflare Pages**.
 
 It covers:
 
@@ -107,7 +107,7 @@ Then reference them with absolute paths:
 Once pushed to GitHub (main branch), Cloudflare Pages automatically builds and publishes the new post at:
 
 ```
-https://vulpinemsp-com.pages.dev/blog/cyber-hygiene-basics/
+https://vulpinemsp.com/blog/cyber-hygiene-basics/
 ```
 
 ---

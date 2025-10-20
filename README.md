@@ -15,7 +15,7 @@ Reproduction of design, content, or brand assets without written consent is proh
 This project uses **Eleventy (11ty)** to generate a static website with dynamic behavior provided by client-side JavaScript and Cloudflare Workers.
 It serves as both a marketing site and a secure portal for forms and compliance checklists.
 
-**Live URL:** [https://vulpinemsp-com.pages.dev/](https://vulpinemsp-com.pages.dev/)
+**Live URL:** [https://vulpinemsp.com/](https://vulpinemsp.com/)
 
 ---
 

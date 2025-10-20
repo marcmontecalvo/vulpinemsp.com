@@ -1,0 +1,95 @@
+---
+layout: layout.njk
+title: Security Baseline - Vulpine Solutions
+permalink: /pages/trust/security-baseline/
+---
+
+<section class="py-5 subtle-gradient">
+  <div class="container px-4">
+    <h1 class="fw-bold mb-3">Security Baseline</h1>
+    <p class="lead text-secondary">Minimum security standards we require to keep your environment safe and supportable.</p>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Endpoints</h5>
+            <ul class="mb-0">
+              <li>Supported Windows/macOS only; EOL systems are out of scope</li>
+              <li>RMM + EDR/AV installed and healthy</li>
+              <li>Full‑disk encryption (BitLocker/FileVault) with escrowed keys</li>
+              <li>Automatic patching: critical ≤ 7 days; others ≤ 30 days</li>
+              <li>No local admin rights for end‑users</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Identity &amp; Access</h5>
+            <ul class="mb-0">
+              <li>MFA required for admin, remote access, and user cloud/email</li>
+              <li>Least‑privilege roles; emergency “break‑glass” account protected</li>
+              <li>Legacy auth disabled wherever feasible</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Microsoft 365</h5>
+            <ul class="mb-0">
+              <li>Anti‑phishing/malware (Defender) with Safe Links/Attachments*</li>
+              <li>SPF, DKIM, and DMARC enforced for domains</li>
+              <li>External auto‑forwarding blocked by default</li>
+              <li>OneDrive/SharePoint sync only on <em>Managed Devices</em></li>
+              <li>Tenant auditing on; risky app consents restricted</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Network &amp; Remote Access</h5>
+            <ul class="mb-0">
+              <li>No inbound RDP open to the Internet</li>
+              <li>Business‑grade firewall, current firmware, DNS filtering enabled</li>
+              <li>Segmented Wi‑Fi (staff/guest/IoT)</li>
+              <li>Firewall/DNS logs retained ≥ 90 days</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Backup &amp; Recovery</h5>
+            <ul class="mb-0">
+              <li>3‑2‑1 backups for servers/critical data; immutable copy where supported</li>
+              <li>Endpoint and M365 backups when purchased</li>
+              <li>Quarterly test restores documented</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Security Awareness &amp; Response</h5>
+            <ul class="mb-0">
+              <li>User training and periodic phishing simulations</li>
+              <li>We may isolate compromised devices and reset credentials during incidents</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-light border mt-4" role="alert">
+      *Feature availability depends on license tier. This page is a summary; the signed MSA/Exhibits control if there’s a conflict.
+    </div>
+  </div>
+</section>

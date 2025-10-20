@@ -3,7 +3,7 @@
     var VC = window.VC = window.VC || {};
     VC.state = VC.state || {};
     VC.config = VC.config || {
-        ROOT: "/assets/forms/main/checklists/",
+        ROOT: "/assets/forms/checklists/",
         DEBUG: false,
         ALLOW_ATTACH: true         // show "Attach evidence" buttons
     };

@@ -74,7 +74,7 @@ It serves as both a marketing site and a secure portal for forms and compliance 
 ### Local Development
 
 ```bash
-npm install
+pnpm install
 npx @11ty/eleventy --serve
 ```
 

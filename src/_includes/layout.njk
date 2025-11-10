@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   {% include "partials/head.html" %}
 </head>
-<body>
-  {% include "partials/nav.html" %}
-  <main>
-    {{ content | safe }}
-  </main>
-  {% include "partials/footer.html" %}
-</body>
+  <body class="d-flex flex-column min-vh-100">
+    {% include "partials/nav.html" %}
+    <main class="d-flex flex-column flex-grow-1">
+      {{ content | safe }}
+    </main>
+    {% include "partials/footer.html" %}
+  </body>
 </html>

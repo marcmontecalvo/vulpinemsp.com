@@ -1,0 +1,34 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# Auto-generated llms.txt (curated first, then rules; de-duplicated)
+
+{% set hybrid = collections.llmsHybrid[0] %}
+
+{# ---- Curated (front-matter) ---- #}
+{% if hybrid.curated.length %}
+{% for g in hybrid.curated %}
+[{{ g.title }}]
+{% for p in g.items %}
+- {{ site.url }}{{ p.url }}
+{% endfor %}
+
+{% endfor %}
+{% endif %}
+
+{# ---- Rule-based (skips curated URLs) ---- #}
+{% for sec in hybrid.rules %}
+[{{ sec.title }}]
+{% if sec.items.length %}
+{% for p in sec.items %}
+- {{ site.url }}{{ p.url }}
+{% endfor %}
+{% else %}
+# (no additional items; all covered above)
+{% endif %}
+
+{% endfor %}
+
+[Attribution]
+Preferred-citation: "Vulpine Solutions — HIPAA & SMB IT guides", {{ site.url }}

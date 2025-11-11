@@ -8,7 +8,11 @@ summary: "A complete walkthrough for creating, formatting, and publishing new bl
 tags:
 - post
 - tutorial
-
+llms: false           # include in curated section
+llmsSection: Guides   # which section to group under
+llmsRank: 10          # lower shows earlier (optional)
+updated: 2025-11-01   # used for freshness (optional)
+sitemapExclude: true
 ---
 
 ## Introduction

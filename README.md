@@ -78,12 +78,12 @@ pnpm install
 npx @11ty/eleventy --serve
 ```
 
-Site builds to `dist/` and runs at [http://localhost:8080](http://localhost:8080) by default.
+Site builds to `_site/` and runs at [http://localhost:8080](http://localhost:8080) by default.
 
 ### Cloudflare Pages
 
 * Build Command: `npx @11ty/eleventy`
-* Build Output Dir: `dist`
+* Build Output Dir: `_site`
 * Environment: `Node 22+`
 * `_headers` ensures correct MIME types for JS/CSS assets.
 * `_worker.js` handles dynamic form POSTs and email routing (optional).

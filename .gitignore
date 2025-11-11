@@ -23,6 +23,8 @@ pids
 # Optional: build/dist folders (if you use a frontend build process)
 dist/
 build/
+site/
+_site/
 
 # Editor folders
 .vscode/

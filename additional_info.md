@@ -24,7 +24,7 @@ Cloudflare Pages automatically builds and deploys the site on each push to the G
 ### Deployment Summary
 
 * **Build command:** `npx @11ty/eleventy`
-* **Output directory:** `dist`
+* **Output directory:** `_site`
 * **Environment:** Node 22+
 * **Optional Worker:** `_worker.js` handles dynamic endpoints (e.g., form submissions)
 

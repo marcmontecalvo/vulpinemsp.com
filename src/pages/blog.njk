@@ -4,29 +4,33 @@ layout: layout.njk
 permalink: /blog/
 ---
 
-<section class="py-5 subtle-gradient flex-grow-1 d-flex flex-column">
+<section class="subtle-gradient">
   <div class="text-center mb-5">
+  </br></br>
     <h1 class="fw-bold">Insights from Vulpine Solutions</h1>
     <p class="lead text-muted">Smart IT. Silent Security.</p>
   </div>
-
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-    {% for post in collections.post | reverse %}
-      <div class="col">
-        <div class="card h-100 shadow-sm border-0">
-          {% if post.data.image %}
-            <img src="{{ post.data.image }}" class="card-img-top" alt="{{ post.data.title }}">
-          {% endif %}
-          <div class="card-body">
-            <h5 class="card-title">{{ post.data.title }}</h5>
-            <p class="card-text text-muted small mb-2">{{ post.date | fmtDate }}</p>
-            <p class="card-text">{{ post.data.summary | safe }}</p>
-          </div>
-          <div class="card-footer bg-transparent border-0">
-            <a href="{{ post.url }}" class="btn btn-outline-primary btn-sm">Read More →</a>
+</section>
+<section class="subtle-gradient flex-grow-1 d-flex flex-column">
+  <div class="container my-5">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      {% for post in collections.post | reverse %}
+        <div class="col">
+          <div class="card h-100 shadow-sm border-0">
+            {% if post.data.image %}
+              <img src="{{ post.data.image }}" class="card-img-top" alt="{{ post.data.title }}">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ post.data.title }}</h5>
+              <p class="card-text text-muted small mb-2">{{ post.date | fmtDate }}</p>
+              <p class="card-text">{{ post.data.summary | safe }}</p>
+            </div>
+            <div class="card-footer bg-transparent border-0">
+              <a href="{{ post.url }}" class="btn btn-outline-primary btn-sm">Read More →</a>
+            </div>
           </div>
         </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
 </section>

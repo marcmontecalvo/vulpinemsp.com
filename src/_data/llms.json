@@ -1,7 +1,7 @@
 {
   "sections": [
-    { "title": "About",   "paths": ["/about/"] },
-    { "title": "Services","paths": ["/managed-it/","/hipaa-compliance/","/incident-response/"] },
-    { "title": "Guides",  "prefix": "/blog/", "limit": 20 }
+    { "title": "About", "paths": ["/about/"] },
+    { "title": "Services", "paths": ["/managed-it/", "/hipaa-compliance/", "/incident-response/"] },
+    { "title": "Guides", "prefix": "/blog/", "limit": 20 }
   ]
 }

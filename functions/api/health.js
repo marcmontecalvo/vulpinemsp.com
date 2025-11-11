@@ -1,4 +1,6 @@
 // ~/functions/api/health.js
 export function onRequestGet() {
-    return new Response(JSON.stringify({ ok: true }), { headers: { 'content-type': 'application/json' } });
+  return new Response(JSON.stringify({ ok: true }), {
+    headers: { 'content-type': 'application/json' },
+  });
 }

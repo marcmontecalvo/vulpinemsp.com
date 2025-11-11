@@ -1,151 +1,142 @@
 # VulpineMSP.com
 
-Public repository for the official **Vulpine Solutions MSP website**
-Hosted on **Cloudflare Pages** with optional **Cloudflare Workers** integration for form handling.
+Public repo for the Vulpine Solutions website. The site is built with Eleventy (11ty), deployed on
+Cloudflare Pages, and uses Cloudflare Pages Functions to handle the contact form via Resend.
 
-© 2025 Vulpine Solutions, LLC. All rights reserved.
-The Vulpine Solutions name, logo, and related branding are proprietary.
-Source is provided for transparency and educational reference only.
-Reproduction of design, content, or brand assets without written consent is prohibited.
+Live site: [https://vulpinemsp.com](https://vulpinemsp.com)
 
----
+## Overview
 
-## 🧬 Overview
+- Static site built with Eleventy 3.x (Nunjucks templates + Markdown)
+- Automatic deploys from GitHub → Cloudflare Pages (production branch: `main`)
+- Contact form posts to a Pages Function (`/api/contact`) that sends email through Resend
+- Simple health probe at `/api/health`
 
-This project uses **Eleventy (11ty)** to generate a static website with dynamic behavior provided by client-side JavaScript and Cloudflare Workers.
-It serves as both a marketing site and a secure portal for forms and compliance checklists.
+## Tech Stack
 
-**Live URL:** [https://vulpinemsp.com/](https://vulpinemsp.com/)
+- Eleventy 3.x (`@11ty/eleventy`)
+- Nunjucks templates under `src/_includes/`
+- Bootstrap 5 (CDN) and custom styles under `src/assets/css/`
+- Cloudflare Pages + Pages Functions (`functions/api/*`)
+- Resend email API for contact submissions
+- Plausible analytics (loaded in `src/_includes/partials/head.html`)
+- Custom Eleventy config in `.eleventy.js` (filters, collections, passthroughs)
 
----
+## Directory Map
 
-## 📁 Directory Structure
+- `functions/api/contact.js` — Cloudflare Pages Function that validates input and sends email via
+  Resend
+- `functions/api/health.js` — Simple `{ ok: true }` status endpoint
+- `src/index.njk` — Homepage with sections for services, about, and contact
+- `src/pages/*.njk` — Additional pages (`/blog`, `/trust/*`, `/people/*`, `/forms`)
+- `src/posts/*.md` — Blog posts (rendered with `layouts/post.njk`)
+- `src/_includes/` — Layouts and partials (head, nav, footer)
+- `src/_data/` — Site-wide data (`site.json`, `sitemap.json`)
+- `src/assets/` — CSS, JS, images, and forms UI assets
+- `src/sitemap.xml.11ty.js` — Generates `sitemap.xml` during build
+- `src/llms.txt.njk` — Builds a curated/rule-based link manifest using `collections.llmsHybrid`
+- `_headers` — Extra headers for Cloudflare Pages (MIME/cache hints)
 
-```
-.
-├── LICENSE
-├── README.md
-├── _headers                 # Custom headers for Cloudflare Pages (MIME + caching)
-├── _worker.js               # Cloudflare Worker for form submission routing
-├── cloudflare-worker.js     # (Legacy/experimental) worker version — see “Files to Remove”
-├── nginx.conf               # Example Nginx config for local/static hosting
-├── package.json / lock      # Eleventy build + dependency management
-└── src
-    ├── _includes/           # Shared layouts & partials
-    │   ├── layout.njk
-    │   ├── layoutforms.njk
-    │   ├── layouts/post.njk
-    │   └── partials/
-    │       ├── head.html
-    │       ├── nav.html
-    │       ├── nav_forms.html
-    │       ├── footer.html
-    │       └── footer_forms.html
-    │
-    ├── assets/
-    │   ├── css/             # Bootstrap + custom CSS
-    │   ├── js/              # Sitewide scripts (custom.js, contact.js, etc.)
-    │   ├── images/          # Brand & media assets
-    │   └── forms/
-    │       ├── js/          # Checklist / form modules (builder, ui, export, etc.)
-    │       └── checklists/  # JSON data models for compliance reviews
-    │
-    ├── pages/
-    │   ├── blog.njk         # Blog index
-    │   ├── faq.njk
-    │   ├── forms.njk        # Form landing page
-    │   ├── people/
-    │   │   └── about-marc.njk
-    │   └── trust/
-    │       ├── privacy.njk
-    │       ├── security-baseline.njk
-    │       └── service-level.njk
-    │
-    ├── posts/               # Blog content in Markdown
-    │   └── hello-world.md
-    │
-    └── public/              # Favicons, robots.txt, and any extra passthrough files
-```
+## Prerequisites
 
----
+- Node.js 20+ (22+ also fine)
+- npm or pnpm (repo includes both `package-lock.json` and `pnpm-lock.yaml`)
 
-## ⚙️ Build & Deployment
+## Install & Run Locally
 
-### Local Development
+- Using npm
+  - `npm install`
+  - `npm run dev` → serves Eleventy at <http://localhost:8080>
+- Using pnpm
+  - `pnpm install`
+  - `pnpm dev` → serves Eleventy at <http://localhost:8080>
+  - Alternative: `pnpm eleventy --serve`
 
-```bash
-pnpm install
-npx @11ty/eleventy --serve
-```
+Notes
 
-Site builds to `_site/` and runs at [http://localhost:8080](http://localhost:8080) by default.
+- Eleventy’s dev server does not execute Cloudflare Pages Functions. To test functions locally:
+  1. Terminal A: `npx @11ty/eleventy --watch`
+  2. Terminal B: `npx wrangler pages dev _site`
+- For Wrangler local env, create a `.dev.vars` file with the bindings in the “Environment” section
+  below.
 
-### Cloudflare Pages
+## Build & Deploy (Cloudflare Pages)
 
-* Build Command: `npx @11ty/eleventy`
-* Build Output Dir: `_site`
-* Environment: `Node 22+`
-* `_headers` ensures correct MIME types for JS/CSS assets.
-* `_worker.js` handles dynamic form POSTs and email routing (optional).
+- Build command: `npx @11ty/eleventy`
+- Output directory: `_site`
+- Production branch: `main`
+- Automatic deployments: enabled
+- Pages will publish to the assigned `*.pages.dev` preview URL and to `vulpinemsp.com` on success
 
----
+Environment (Pages → Settings → Variables and Secrets)
 
-## 🧩 Eleventy Configuration Highlights
+- `RESEND_API_KEY` (Secret) — API key for Resend
+- `CONTACT_FROM` (Plaintext) — default sender address (fallback: `noreply@vulpinemsp.com`)
+- `CONTACT_TO` (Plaintext) — recipient address (fallback: `contact@vulpinemsp.com`)
+- `SITE_NAME` (Plaintext, optional) — informational only
 
-* All static assets live under `src/assets/**`
-  → served at `/assets/...`
-* Clean permalink structure (`/trust/privacy/`, `/people/about-marc/`, `/forms/main/`)
-* `src/pages/**` defines each page; layouts in `_includes/`
-* Markdown blog posts auto-collected into `/blog/`
-* Forms and checklists use **client-side JS** + JSON data only (no server-side rendering)
+## Contact Form API
 
----
+- Endpoint: `POST /api/contact`
+- Body (JSON):
+  - `firstName` (required)
+  - `lastName` (required)
+  - `email` (required, validated)
+  - `company` (optional)
+  - `phone` (optional)
+  - `extension` (optional)
+  - `message` (required)
+  - `website` (honeypot; leave empty)
+- Behavior: Validates input, builds text/HTML email, and sends via Resend using `CONTACT_FROM`,
+  `CONTACT_TO`, and `RESEND_API_KEY`.
+- CORS: Allowed for the request origin; `OPTIONS` is handled for preflight.
+- Success response: `{ ok: true, ... }` (returns upstream status/body for transparency)
 
-## 🧠 Checklist & Forms Subsystem
+Health Check
 
-* Core JS: `/assets/forms/main/js/*.js`
-* Data: `/assets/forms/main/checklists/*.json`
-* Entry page: `/pages/forms/main/` (uses `layoutforms.njk`)
-* JSON schema supports sections, categories, and item metadata
-* `ui.js` sets `VC.config.ROOT = "/assets/forms/main/checklists/"`
-  so all checklists load directly as static JSON.
+- `GET /api/health` → `{ ok: true }`
 
----
+Client Integration
 
-## 🔐 Cloudflare Worker Integration
+- The homepage contact form posts JSON to `/api/contact` (`src/assets/js/contact.js`).
 
-`_worker.js` routes form submissions (`/api/contact` etc.) and applies:
+## Blog Authoring
 
-* CAPTCHA / bot filtering
-* Email / Webhook relay
-* JSON response formatting
+- Location: `src/posts/*.md`
+- Minimum front matter:
+  - `title`, `date`, `layout: layouts/post.njk`, `permalink`, `tags: [post]`, `summary`
+- Blog index template: `src/pages/blog.njk`
+- RSS-like feed: `src/pages/feed.xml.njk`
+- Optional curated sections: set `llms: true`, `llmsSection`, and `llmsRank` in front matter to
+  include a post in the curated portion of `llms.txt`.
+- Full guide: `docs/blog-authoring.md`
 
-When running locally, these routes are bypassed.
+## Eleventy Configuration Notes
 
----
+- `.eleventy.js` adds:
+  - `fmtDate` filter used by blog and post templates
+  - `gitLastModISO` filter for last-modified timestamps
+  - `livePages` collection used by the sitemap generator
+  - `llmsHybrid` collection that merges curated front-matter with rule-based sections from
+    `src/_data/llms.json`
+  - Passthrough copies for `src/assets` and `src/public`
 
-## 🚀 Deployment Targets
+## Development Tips
 
-| Environment | Platform          | Purpose                    |
-| ----------- | ----------------- | -------------------------- |
-| `main`      | Cloudflare Pages  | Production site            |
-| `staging`   | Local / GitHub    | Pre-release validation     |
-| `worker`    | Cloudflare Worker | Secure API proxy for forms |
+- Linting/testing are not configured; keep changes small and verify locally.
+- The `_headers` file is optional on Pages; it’s included as a safety net for MIME/cache hints.
+- There is a sample Express server at `src/assets/js/server.js` that is not used in production
+  (Pages Functions are used instead).
 
----
+Cloudflare build command
 
-## 🧾 License
+- It’s fine to keep `npx @11ty/eleventy` (or `npm run build`). Using `pnpm` on Pages requires Pages
+  to use pnpm as the package manager; because this repo contains both `package-lock.json` and
+  `pnpm-lock.yaml`, Pages will default to npm. Unless you remove `package-lock.json` and switch
+  Pages to pnpm, stick with `npx @11ty/eleventy`.
 
-This project is distributed for transparency and reference only.
-All code © 2025 Vulpine Solutions LLC.
-No derivative works, redistribution, or reuse of proprietary design or branding elements without written consent.
+## License & Branding
 
----
-
-## 🧱 Attribution
-
-Built with:
-
-* [Eleventy (11ty)](https://www.11ty.dev/)
-* [Bootstrap 5](https://getbootstrap.com/)
-* [Cloudflare Pages & Workers](https://pages.cloudflare.com/)
+- Code: MIT license (see `LICENSE`).
+- Brand assets, copy, and design elements are proprietary to Vulpine Solutions and not licensed for
+  reuse.

@@ -5,11 +5,51 @@
   "private": true,
   "scripts": {
     "dev": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "lint:js": "eslint . --ext .js,.mjs,.cjs --max-warnings=0",
+    "lint:md": "markdownlint \"**/*.md\" \"!_site/**\"",
+    "lint": "pnpm format:check && pnpm lint:md && pnpm lint:js",
+    "test": "echo \"(no tests yet)\""
   },
-  "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
-    "@11ty/eleventy-plugin-rss": "^2.0.4"
+    "@11ty/eleventy-plugin-rss": "^2.0.4",
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "globals": "^15.15.0",
+    "markdownlint-cli": "^0.45.0",
+    "prettier": "^3.6.2"
+  },
+  "type": "module",
+  "eslintConfig": {
+    "root": true,
+    "languageOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module",
+      "globals": {
+        "document": "readonly",
+        "window": "readonly",
+        "navigator": "readonly",
+        "fetch": "readonly"
+      }
+    },
+    "plugins": [],
+    "rules": {
+      "no-unused-vars": [
+        "warn",
+        {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_"
+        }
+      ],
+      "no-undef": "error",
+      "no-console": "off"
+    },
+    "ignores": [
+      "_site/**",
+      "node_modules/**"
+    ]
   }
 }

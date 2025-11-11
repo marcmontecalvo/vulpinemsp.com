@@ -1,57 +1,59 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('#contactForm');
+  const form = document.querySelector('#contactForm');
 
-    form.addEventListener('submit', async function (e) {
-        e.preventDefault();
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-        form.classList.add('was-validated');
-        if (!form.checkValidity()) {
-            return; // Bootstrap shows errors
-        }
-
-        const data = {
-            firstName: form.firstName.value.trim(),
-            lastName: form.lastName.value.trim(),
-            email: form.email.value.trim(),
-            company: form.company.value.trim(),
-            phone: form.phone.value.trim(),
-            extension: form.extension.value.trim(),
-            message: form.message.value.trim()
-        };
-
-        try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-
-            if (response.ok) {
-                showContactSuccessPopup();   // <-- Call this first
-                form.reset();                // <-- THEN reset the form                
-                form.classList.remove('was-validated'); // <-- Remove validation state after reset
-            } else {
-                alert('There was a problem submitting the form. Please try again.');
-            }
-        } catch (err) {
-            console.error('Error submitting the form. Please try again.', err);
-            showContactErrorPopup();
-        }
-    });
-
-    // Helper: Clear all validation styles
-    function clearValidation(form) {
-        form.classList.remove('was-validated');
-        Array.from(form.elements).forEach(el => {
-            el.classList.remove('is-valid', 'is-invalid');
-        });
+    form.classList.add('was-validated');
+    if (!form.checkValidity()) {
+      return; // Bootstrap shows errors
     }
 
-    // Branded success popup
-    window.showContactSuccessPopup = function () {
-        let modal = document.getElementById('contactSuccessModal');
-        if (!modal) {
-            document.body.insertAdjacentHTML('beforeend', `
+    const data = {
+      firstName: form.firstName.value.trim(),
+      lastName: form.lastName.value.trim(),
+      email: form.email.value.trim(),
+      company: form.company.value.trim(),
+      phone: form.phone.value.trim(),
+      extension: form.extension.value.trim(),
+      message: form.message.value.trim(),
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        showContactSuccessPopup(); // <-- Call this first
+        form.reset(); // <-- THEN reset the form
+        form.classList.remove('was-validated'); // <-- Remove validation state after reset
+      } else {
+        alert('There was a problem submitting the form. Please try again.');
+      }
+    } catch (err) {
+      console.error('Error submitting the form. Please try again.', err);
+      showContactErrorPopup();
+    }
+  });
+
+  // Helper: Clear all validation styles
+  function _clearValidation(form) {
+    form.classList.remove('was-validated');
+    Array.from(form.elements).forEach((el) => {
+      el.classList.remove('is-valid', 'is-invalid');
+    });
+  }
+
+  // Branded success popup
+  window.showContactSuccessPopup = function () {
+    let modal = document.getElementById('contactSuccessModal');
+    if (!modal) {
+      document.body.insertAdjacentHTML(
+        'beforeend',
+        `
                 <div class="modal fade" id="contactSuccessModal" tabindex="-1" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content text-center">
@@ -78,28 +80,29 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                   </div>
                 </div>
-            `);
-            modal = document.getElementById('contactSuccessModal');
-        }
-        const modalInstance = new bootstrap.Modal(modal);
-        modalInstance.show();
-    };
+            `
+      );
+      modal = document.getElementById('contactSuccessModal');
+    }
+    const modalInstance = new bootstrap.Modal(modal);
+    modalInstance.show();
+  };
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    var phoneInput = document.getElementById('phone');
-    var phoneMask = IMask(phoneInput, {
-        mask: [
-            // With country code 1
-            {
-                mask: '1(000)000-0000',
-                country: 'US'
-            },
-            // Without country code
-            {
-                mask: '(000)000-0000',
-                country: 'US'
-            }
-        ]
-    });
+  var phoneInput = document.getElementById('phone');
+  var _phoneMask = IMask(phoneInput, {
+    mask: [
+      // With country code 1
+      {
+        mask: '1(000)000-0000',
+        country: 'US',
+      },
+      // Without country code
+      {
+        mask: '(000)000-0000',
+        country: 'US',
+      },
+    ],
+  });
 });

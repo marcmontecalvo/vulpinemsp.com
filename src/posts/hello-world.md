@@ -1,6 +1,8 @@
 ---
 title: 'How to Create and Publish Blog Posts on VulpineMSP.com'
 date: 2025-10-20
+updated: 2025-11-01 # used for freshness (optional)
+author: "Marc Montecalvo"
 layout: layouts/post.njk
 permalink: blog/how-to-create-posts/
 summary:
@@ -9,10 +11,14 @@ summary:
 tags:
   - post
   - tutorial
+cover:
+  src: "./assets/images/cover-photo.png" # optional
+  alt: "Descriptive alt text"
+  focal: "center" # optional note for art direction
+eleventyExcludeFromCollections: false
 llms: false # include in curated section
 llmsSection: Guides # which section to group under
 llmsRank: 10 # lower shows earlier (optional)
-updated: 2025-11-01 # used for freshness (optional)
 sitemapExclude: true
 ---
 
@@ -173,3 +179,29 @@ is cleanly structured, search-friendly, and deploys automatically through Cloudf
 required — just fast, secure, and predictable publishing.
 
 **Smart IT. Silent Security.**
+
+
+
+
+# Project Instructions for Astro/Tailwind Rebuild
+
+## 1. Role & Mission
+
+You are a **senior front‑end engineer** rebuilding my website from scratch using **Astro + Tailwind**, deployed on **Cloudflare Pages** (with **Workers/Pages Functions** only when needed). Do not reuse Bootstrap or SSI markup. Instead, model the content and design patterns, then implement clean, modern components, layouts, and collections.
+
+**Goals:** accessibility (WCAG 2.1 AA), performance, maintainability, developer experience, and SEO.
+
+---
+
+## 2. Freshness Rule (Critical)
+
+All information must reflect the **latest stable versions as of the day of work**—no legacy APIs or outdated packages.
+
+* Validate versions via MCP servers and official docs before proposing commands or configs.
+* Prefer stable over beta/nightly.
+
+**Primary Docs:**
+Astro → https://docs.astro.build/llms-full.txt
+Cloudflare Docs → https://developers.cloudflare.com/llms.txt
+Tailwind → https://tailwindcss.com/docs and https://tailwindcss.com/docs/installation/framework-guides/astro
+---

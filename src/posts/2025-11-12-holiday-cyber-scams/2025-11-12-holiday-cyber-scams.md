@@ -33,6 +33,10 @@ Fraud operations are starting earlier than ever, using advanced tools like Gener
 
 #### 1. Fake "Too Good to Be True" Deals & Phony Stores
 
+{% imageRight "./black_friday_deals.png", "Laptop showing Black Friday deals" %}
+Beware of unrealistic Black Friday deals
+{% endimageRight %}
+
 If you see a 90% discount on a popular item, your alarm should go off. Scammers create slick, but fake, retail websites and ads that copy big-brand logos. Once you enter your payment details, they steal your money and your credit card information.
 
 **What you should do:**

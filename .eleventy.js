@@ -21,6 +21,24 @@ export default function (eleventyConfig) {
 
   eleventyConfig.setLibrary('md', md);
 
+  // Image float paired shortcodes for blog posts
+  // Usage: {% imageRight "./file.png", "Alt text" %}Caption text{% endimageRight %}
+  function createImageFloat(position) {
+    return function(caption, src, alt = '') {
+      // Render caption with markdown support (bold, italic, links)
+      const captionHtml = md.renderInline(caption.trim());
+
+      return `<figure class="img-float-${position}">
+  <img src="${src}" alt="${alt}" class="figure-img img-fluid rounded shadow-sm">
+  <figcaption class="figure-caption">${captionHtml}</figcaption>
+</figure>`;
+    };
+  }
+
+  eleventyConfig.addPairedShortcode('imageRight', createImageFloat('right'));
+  eleventyConfig.addPairedShortcode('imageLeft', createImageFloat('left'));
+  eleventyConfig.addPairedShortcode('imageCenter', createImageFloat('center'));
+
   // existing passthroughs
   eleventyConfig.addPassthroughCopy('src/assets');
   eleventyConfig.addPassthroughCopy({ 'src/public': '.' });

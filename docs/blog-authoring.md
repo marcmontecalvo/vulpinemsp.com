@@ -72,6 +72,7 @@ cover:
 - Images
   - Place under `src/assets/images/blog/`
   - Reference with absolute paths, e.g. `![Alt](/assets/images/blog/file.webp)`
+  - For inline images with text wrapping, see [Inline Image Placement](#inline-image-placement)
 - Test locally
   - `npm run dev` or `pnpm dev` → <http://localhost:8080>
 - Deploy
@@ -252,6 +253,149 @@ blogUrl: 'https://vulpinemsp.com/blog/custom-url/'
 ```
 
 This overrides the auto-generated URL in Open Graph tags.
+
+—
+
+## Inline Image Placement
+
+Add images within your blog post content with text wrapping and responsive behavior using simple shortcode syntax.
+
+### Basic Usage
+
+Use paired shortcodes to place images that wrap with text:
+
+```markdown
+{% imageRight "./image.png", "Alt text" %}
+Caption text with **markdown** support
+{% endimageRight %}
+
+Your content continues here and wraps around the image on desktop...
+```
+
+### Available Positions
+
+**Float Right** (`imageRight`)
+```markdown
+{% imageRight "./photo.png", "Alt text" %}
+Image caption goes here
+{% endimageRight %}
+
+Text wraps to the left of the image on desktop.
+```
+
+**Float Left** (`imageLeft`)
+```markdown
+{% imageLeft "./photo.png", "Alt text" %}
+Image caption goes here
+{% endimageLeft %}
+
+Text wraps to the right of the image on desktop.
+```
+
+**Centered** (`imageCenter`)
+```markdown
+{% imageCenter "./photo.png", "Alt text" %}
+Image caption goes here
+{% endimageCenter %}
+
+Image is centered with no text wrapping.
+```
+
+### Parameters
+
+1. **Image path** (required): Relative path to image file
+   - Place images in same folder as markdown file
+   - Use `./filename.png` syntax
+
+2. **Alt text** (required): Descriptive text for accessibility
+   - Describes the image content
+   - Used by screen readers and when image fails to load
+
+3. **Caption** (between tags): Optional caption text
+   - Supports **markdown** formatting (bold, italic, links)
+   - Displayed below image in italics
+   - Can be left empty if no caption needed
+
+### Examples
+
+**With markdown in caption:**
+```markdown
+{% imageRight "./security-checklist.png", "Security dashboard" %}
+Learn more in our [security guide](/blog/security-basics/)
+{% endimageRight %}
+```
+
+**Without caption:**
+```markdown
+{% imageLeft "./logo.png", "Company logo" %}
+{% endimageLeft %}
+```
+
+**With bold text in caption:**
+```markdown
+{% imageCenter "./team-photo.png", "Our team" %}
+**Meet the team** behind Vulpine Solutions
+{% endimageCenter %}
+```
+
+### Responsive Behavior
+
+**Desktop (768px and wider)**:
+- `imageRight` and `imageLeft` float alongside text (max-width: 400px)
+- `imageCenter` displays centered (max-width: 600px)
+- Text wraps around floated images
+
+**Mobile (< 768px)**:
+- All images stack full-width
+- No floating behavior
+- Consistent reading experience
+
+### Best Practices
+
+1. **Image Size**: Use images that are 800-1200px wide for best quality
+2. **File Format**: Prefer `.webp` for smaller file size, fallback to `.png` or `.jpg`
+3. **Alt Text**: Always provide descriptive alt text for accessibility
+4. **Caption Length**: Keep captions concise (1-2 sentences)
+5. **Placement**: Use floated images for supporting visuals, centered for key images
+6. **Spacing**: Shortcodes handle spacing automatically - no need for extra line breaks
+
+### Common Use Cases
+
+**Supporting Screenshot:**
+```markdown
+#### How to Enable MFA
+
+{% imageRight "./mfa-settings.png", "MFA settings screen" %}
+Screenshot showing the MFA toggle in settings
+{% endimageRight %}
+
+Navigate to Settings > Security > Multi-Factor Authentication. Toggle the switch to enable...
+```
+
+**Before/After Comparison:**
+```markdown
+{% imageLeft "./before.png", "Before optimization" %}
+**Before:** Site loading in 8 seconds
+{% endimageLeft %}
+
+After implementing our caching strategy, the same page now loads in under 2 seconds...
+```
+
+**Featured Image:**
+```markdown
+{% imageCenter "./architecture-diagram.png", "System architecture" %}
+Complete architecture showing **microservices** and **data flow**
+{% endimageCenter %}
+
+This architecture enables horizontal scaling...
+```
+
+### Technical Details
+
+- **Implementation**: Eleventy paired shortcodes in `.eleventy.js`
+- **Styling**: Responsive CSS in `src/assets/css/custom.css`
+- **Classes**: `.img-float-right`, `.img-float-left`, `.img-float-center`
+- **Markdown Processing**: Captions rendered with `markdown-it.renderInline()`
 
 —
 

@@ -387,3 +387,57 @@ footer {
 .markdown-content ul.contains-task-list {
   padding-left: 1.5rem;
 }
+
+/* Floating images for blog posts - responsive behavior */
+.img-float-right,
+.img-float-left,
+.img-float-center {
+  max-width: 100%;
+  margin: 1rem 0;
+  clear: both; /* Prevent overlapping floats */
+}
+
+/* Mobile: stack images full-width */
+.img-float-right img,
+.img-float-left img,
+.img-float-center img {
+  width: 100%;
+  height: auto;
+}
+
+/* Caption styling */
+.img-float-right figcaption,
+.img-float-left figcaption,
+.img-float-center figcaption {
+  font-size: 0.875rem;
+  color: #6c757d;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Desktop (768px and up): enable floating and set max widths */
+@media (min-width: 768px) {
+  .img-float-right {
+    float: right;
+    max-width: 400px;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .img-float-left {
+    float: left;
+    max-width: 400px;
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .img-float-center {
+    display: block;
+    max-width: 600px;
+    margin: 2rem auto;
+    text-align: center;
+  }
+}

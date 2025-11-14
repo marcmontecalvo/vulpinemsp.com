@@ -3,8 +3,24 @@ import { execSync } from 'node:child_process';
 import path from 'node:path';
 import fs from 'node:fs';
 import { glob } from 'glob';
+import markdownIt from 'markdown-it';
+import markdownItTaskLists from 'markdown-it-task-lists';
+import markdownItIconTasks from './lib/markdown-it-icon-tasks.js';
 
 export default function (eleventyConfig) {
+  // Configure markdown-it with task lists plugin
+  // IMPORTANT: Icon tasks plugin must run BEFORE task-lists plugin
+  const md = markdownIt({
+    html: true,
+    breaks: false,
+    linkify: true
+  }).use(markdownItIconTasks)
+    .use(markdownItTaskLists, {
+    enabled: true
+  });
+
+  eleventyConfig.setLibrary('md', md);
+
   // existing passthroughs
   eleventyConfig.addPassthroughCopy('src/assets');
   eleventyConfig.addPassthroughCopy({ 'src/public': '.' });

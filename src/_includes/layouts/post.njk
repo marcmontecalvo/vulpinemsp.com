@@ -16,11 +16,49 @@ layout: layout.njk
         {% endfor %}
       </div>
       {% endif %}
+
+      <!-- Share Button -->
+      <div class="mb-3">
+        <div class="dropdown d-inline-block">
+          <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="shareDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-share"></i> Share
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="shareDropdown">
+            <li>
+              <a class="dropdown-item" href="#" id="copyLink">
+                <i class="bi bi-link-45deg"></i> Copy Link
+              </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item" href="#" id="shareTwitter" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-twitter-x"></i> Share on X (Twitter)
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#" id="shareLinkedIn" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-linkedin"></i> Share on LinkedIn
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#" id="shareFacebook" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-facebook"></i> Share on Facebook
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#" id="shareEmail">
+                <i class="bi bi-envelope"></i> Share via Email
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <hr>
 
       {% if cover %}
       <figure class="figure w-100 my-4">
-        <img src="{{ cover.src }}" class="img-fluid rounded shadow-sm" alt="{{ cover.alt }}">
+        <img src="{{ cover.src }}" class="post-cover-image-aspect-ratio rounded shadow-sm" alt="{{ cover.alt }}">
         {% if cover.caption %}
         <figcaption class="figure-caption text-center">{{ cover.caption }}</figcaption>
         {% endif %}
@@ -126,3 +164,56 @@ layout: layout.njk
     </aside>
   </div>
 </section>
+
+<script>
+  // Share functionality
+  (function() {
+    const pageUrl = '{{ blogUrl or (site.url + page.url) }}';
+    const pageTitle = '{{ title | safe }}';
+    const pageDescription = '{{ summary | safe }}';
+
+    // Copy link to clipboard
+    document.getElementById('copyLink')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      navigator.clipboard.writeText(pageUrl).then(() => {
+        const originalText = this.innerHTML;
+        this.innerHTML = '<i class="bi bi-check2"></i> Copied!';
+        setTimeout(() => {
+          this.innerHTML = originalText;
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy:', err);
+        alert('Failed to copy link. Please try again.');
+      });
+    });
+
+    // Share on Twitter/X
+    document.getElementById('shareTwitter')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(pageTitle)}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    });
+
+    // Share on LinkedIn
+    document.getElementById('shareLinkedIn')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    });
+
+    // Share on Facebook
+    document.getElementById('shareFacebook')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    });
+
+    // Share via Email
+    document.getElementById('shareEmail')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      const subject = encodeURIComponent(`Check out: ${pageTitle}`);
+      const body = encodeURIComponent(`I thought you might find this interesting:\n\n${pageTitle}\n${pageDescription}\n\n${pageUrl}`);
+      window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    });
+  })();
+</script>

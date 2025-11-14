@@ -327,8 +327,8 @@ footer {
 
 /* Ensure list items have proper vertical space */
 .markdown-content li {
-  margin-bottom: 0.5rem; 
-  line-height: 1.6; /* Improve line height for readability */
+  margin-bottom: 0.6rem; 
+  line-height: 1.5; /* Improve line height for readability */
 }
 
 /* Ensure paragraphs following lists also have space */
@@ -339,4 +339,51 @@ footer {
 /* Ensure the inline lists (like "What you should do" in the blog post) are tight */
 .markdown-content ul.mb-0 li {
     margin-bottom: 0;
+}
+
+.post-cover-image-fixed-height-cropped {
+  width: 100%;
+  height: 400px; /* Adjust to your preferred height */
+  object-fit: cover; /* Crops the image to fill the space */
+  object-position: center; /* Centers the crop */
+}
+
+.post-cover-image-max-height-responsive {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.post-cover-image-aspect-ratio {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* or 21/9, 4/3, etc. */
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Task list checkbox styling */
+.markdown-content .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-content .task-list-item input[type="checkbox"] {
+  margin-right: 0.3rem;
+  margin-left: -1.5rem;
+  cursor: default;
+  width: 1.1em;
+  height: 1.1em;
+  vertical-align: middle;
+}
+
+/* Icon-based task list items (using Bootstrap icons) */
+.markdown-content .task-list-item i {
+  font-size: 1.2em;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  margin-left: -1.5rem;
+}
+
+.markdown-content ul.contains-task-list {
+  padding-left: 1.5rem;
 }

@@ -101,48 +101,80 @@ permalink: /blog/
 </section>
 
 <script>
+  // Track selected tags
+  let selectedTags = new Set();
+
   // Simple search functionality
   document.getElementById('blog-search')?.addEventListener('input', function(e) {
     const searchTerm = e.target.value.toLowerCase();
+
+    // Clear tag selections when user types in search
+    if (searchTerm && !searchTerm.startsWith('#')) {
+      selectedTags.clear();
+      document.querySelectorAll('[data-tag]').forEach(t => {
+        t.classList.remove('bg-primary', 'text-white');
+        t.classList.add('bg-light', 'text-dark');
+      });
+    }
+
+    filterPosts();
+  });
+
+  // Multi-select tag filtering with toggle
+  document.querySelectorAll('[data-tag]').forEach(tagBadge => {
+    tagBadge.addEventListener('click', function(e) {
+      e.preventDefault();
+      const tag = this.dataset.tag.toLowerCase();
+
+      // Toggle tag selection
+      if (selectedTags.has(tag)) {
+        selectedTags.delete(tag);
+        this.classList.remove('bg-primary', 'text-white');
+        this.classList.add('bg-light', 'text-dark');
+      } else {
+        selectedTags.add(tag);
+        this.classList.remove('bg-light', 'text-dark');
+        this.classList.add('bg-primary', 'text-white');
+      }
+
+      // Clear search box when tags are selected
+      const searchBox = document.getElementById('blog-search');
+      if (searchBox && selectedTags.size > 0) {
+        searchBox.value = '';
+      }
+
+      filterPosts();
+    });
+  });
+
+  // Unified filter function
+  function filterPosts() {
+    const searchTerm = document.getElementById('blog-search')?.value.toLowerCase() || '';
     const cards = document.querySelectorAll('.col-lg-8 .col');
 
     cards.forEach(card => {
       const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
-      const summary = card.querySelector('.card-text')?.textContent.toLowerCase() || '';
-      const tags = Array.from(card.querySelectorAll('.badge')).map(b => b.textContent.toLowerCase()).join(' ');
+      // Get all .card-text elements (includes date and summary)
+      const allCardText = Array.from(card.querySelectorAll('.card-text'))
+        .map(el => el.textContent.toLowerCase())
+        .join(' ');
+      const cardTags = Array.from(card.querySelectorAll('.badge'))
+        .map(b => b.textContent.toLowerCase().replace('#', ''));
 
-      if (title.includes(searchTerm) || summary.includes(searchTerm) || tags.includes(searchTerm)) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
+      let show = true;
+
+      // Apply search filter
+      if (searchTerm) {
+        const tags = cardTags.join(' ');
+        show = title.includes(searchTerm) || allCardText.includes(searchTerm) || tags.includes(searchTerm);
       }
+
+      // Apply tag filter (must match ALL selected tags)
+      if (show && selectedTags.size > 0) {
+        show = Array.from(selectedTags).every(tag => cardTags.includes(tag));
+      }
+
+      card.style.display = show ? '' : 'none';
     });
-  });
-
-  // Tag filtering
-  document.querySelectorAll('[data-tag]').forEach(tagBadge => {
-    tagBadge.addEventListener('click', function(e) {
-      e.preventDefault();
-      const selectedTag = this.dataset.tag.toLowerCase();
-      const cards = document.querySelectorAll('.col-lg-8 .col');
-
-      cards.forEach(card => {
-        const tags = Array.from(card.querySelectorAll('.badge')).map(b => b.textContent.toLowerCase().replace('#', ''));
-
-        if (tags.includes(selectedTag)) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      // Clear search box
-      const searchBox = document.getElementById('blog-search');
-      if (searchBox) searchBox.value = `#${selectedTag}`;
-
-      // Highlight active tag
-      document.querySelectorAll('[data-tag]').forEach(t => t.classList.remove('bg-primary', 'text-white'));
-      this.classList.add('bg-primary', 'text-white');
-    });
-  });
+  }
 </script>

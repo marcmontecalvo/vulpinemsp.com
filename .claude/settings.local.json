@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(pnpm add:*)"
+      "Bash(pnpm add:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npx @11ty/eleventy:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []

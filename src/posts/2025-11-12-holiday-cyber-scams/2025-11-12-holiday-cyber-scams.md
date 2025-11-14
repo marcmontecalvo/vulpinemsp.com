@@ -8,13 +8,9 @@ blogUrl: https://vulpinemsp.com/blog/holiday-cyber-scams/
 summary: "Holiday-season cyber scams are scaling with AI and automation - here’s a practical checklist for small businesses to stay ahead."
 tags: ["post","msp","security","cyber-safety","holiday"]
 cover:
-  src: ./smishing_scam.png
+  src: ./black_friday_deals.png
   alt: "Fake package delivery SMS cyber scam"
   focal: "center"
-assets:
-  - path: ./black_friday_deals.png
-    role: primary
-    alt: "Laptop"
 campaign: holiday-cyber-scams
 utmCampaign: blog_holiday-cyber-scams
 eleventyExcludeFromCollections: false
@@ -33,7 +29,7 @@ Fraud operations are starting earlier than ever, using advanced tools like Gener
 
 #### 1. Fake "Too Good to Be True" Deals & Phony Stores
 
-{% imageRight "./black_friday_deals.png", "Laptop showing Black Friday deals" %}
+{% imageRight "./fake_store_webpage.png", "Real storefront next to a fake one." %}
 Beware of unrealistic Black Friday deals
 {% endimageRight %}
 
@@ -63,6 +59,10 @@ The packages are delayed! Or are they? Scammers exploit the volume of holiday sh
 
 - **Don't Click Unexpected Links:** The safest rule is to never click a tracking link in an email or text you didn't specifically request.
 - **Check Independently:** If you're worried about a delivery, go directly to the carrier's official website (like UPS or FedEx) and enter your official tracking number there.
+
+{% imageRight "./smishing_scam.png", "Fake SMS text claiming a package delivery delay." %}
+Fake texts and emails can be convincing - think before you click!
+{% endimageRight %}
 
 #### 4. Gift Card and Urgent Payment Scams
 

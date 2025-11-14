@@ -420,15 +420,15 @@ footer {
 @media (min-width: 768px) {
   .img-float-right {
     float: right;
-    max-width: 400px;
+    max-width: 320px;
     margin-left: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     margin-top: 0.5rem;
   }
 
   .img-float-left {
     float: left;
-    max-width: 400px;
+    max-width: 320px;
     margin-right: 1.5rem;
     margin-bottom: 1rem;
     margin-top: 0.5rem;

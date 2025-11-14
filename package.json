@@ -51,5 +51,8 @@
       "_site/**",
       "node_modules/**"
     ]
+  },
+  "dependencies": {
+    "glob": "^11.0.3"
   }
 }

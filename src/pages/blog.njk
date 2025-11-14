@@ -13,24 +13,136 @@ permalink: /blog/
 </section>
 <section class="subtle-gradient flex-grow-1 d-flex flex-column">
   <div class="container my-5">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-      {% for post in collections.post | reverse %}
-        <div class="col">
-          <div class="card h-100 shadow-sm border-0">
-            {% if post.data.image %}
-              <img src="{{ post.data.image }}" class="card-img-top" alt="{{ post.data.title }}">
-            {% endif %}
-            <div class="card-body">
-              <h5 class="card-title">{{ post.data.title }}</h5>
-              <p class="card-text text-muted small mb-2">{{ post.date | fmtDate }}</p>
-              <p class="card-text">{{ post.data.summary | safe }}</p>
+    <div class="row">
+      <!-- Main Content Area -->
+      <div class="col-lg-8">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          {% for post in collections.post | reverse %}
+            <div class="col">              
+              <a href="{{ post.url }}" class="card h-100 shadow-sm border-0 text-decoration-none text-dark">
+                {% if post.data.cover.src %}
+                  <img src="{{ post.url }}{{ post.data.cover.src }}" class="card-img-top" alt="{{ post.data.cover.alt or post.data.title }}" style="object-fit: cover; height: 200px;">
+                {% elif post.data.image %}
+                  <img src="{{ post.data.image }}" class="card-img-top" alt="{{ post.data.title }}" style="object-fit: cover; height: 200px;">
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">{{ post.data.title }}</h5>
+                  <p class="card-text text-muted small mb-2">{{ post.date | fmtDate }}</p>
+                  <p class="card-text">{{ post.data.summary | safe }}</p>
+                  {% if post.data.tags %}
+                  <div class="mt-2">
+                    {% for tag in post.data.tags %}
+                      {% if tag != "post" %}
+                        <span class="badge bg-secondary me-1 mb-1">#{{ tag }}</span>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  {% endif %}
+                </div>
+                <div class="card-footer bg-transparent border-0 pt-0">
+                  <small class="text-primary">Read More →</small>
+                </div>
+              </a>        
             </div>
-            <div class="card-footer bg-transparent border-0">
-              <a href="{{ post.url }}" class="btn btn-outline-primary btn-sm">Read More →</a>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-lg-4 mt-4 mt-lg-0">
+        <!-- Search Box -->
+        <div class="card shadow-sm border-0 mb-4">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Search</h5>
+            <input type="text" id="blog-search" class="form-control" placeholder="Search posts...">
+          </div>
+        </div>
+
+        <!-- Newest Posts -->
+        <div class="card shadow-sm border-0 mb-4">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Newest Posts</h5>
+            <ul class="list-unstyled">
+              {% for post in collections.post | reverse | limit(5) %}
+              <li class="mb-2">
+                <a href="{{ post.url }}" class="text-decoration-none">
+                  <small class="text-muted d-block">{{ post.date | fmtDate }}</small>
+                  {{ post.data.title }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Popular Tags -->
+        <div class="card shadow-sm border-0 mb-4">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Popular Tags</h5>
+            <div>
+              {% set allTags = [] %}
+              {% for post in collections.post %}
+                {% for tag in post.data.tags %}
+                  {% if tag != "post" %}
+                    {% set allTags = (allTags.push(tag), allTags) %}
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+              {% set uniqueTags = allTags | unique | sort %}
+              {% for tag in uniqueTags %}
+                <a href="#" class="badge bg-light text-dark border me-1 mb-2 text-decoration-none" data-tag="{{ tag }}">#{{ tag }}</a>
+              {% endfor %}
             </div>
           </div>
         </div>
-      {% endfor %}
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  // Simple search functionality
+  document.getElementById('blog-search')?.addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const cards = document.querySelectorAll('.col-lg-8 .col');
+
+    cards.forEach(card => {
+      const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
+      const summary = card.querySelector('.card-text')?.textContent.toLowerCase() || '';
+      const tags = Array.from(card.querySelectorAll('.badge')).map(b => b.textContent.toLowerCase()).join(' ');
+
+      if (title.includes(searchTerm) || summary.includes(searchTerm) || tags.includes(searchTerm)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+
+  // Tag filtering
+  document.querySelectorAll('[data-tag]').forEach(tagBadge => {
+    tagBadge.addEventListener('click', function(e) {
+      e.preventDefault();
+      const selectedTag = this.dataset.tag.toLowerCase();
+      const cards = document.querySelectorAll('.col-lg-8 .col');
+
+      cards.forEach(card => {
+        const tags = Array.from(card.querySelectorAll('.badge')).map(b => b.textContent.toLowerCase().replace('#', ''));
+
+        if (tags.includes(selectedTag)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Clear search box
+      const searchBox = document.getElementById('blog-search');
+      if (searchBox) searchBox.value = `#${selectedTag}`;
+
+      // Highlight active tag
+      document.querySelectorAll('[data-tag]').forEach(t => t.classList.remove('bg-primary', 'text-white'));
+      this.classList.add('bg-primary', 'text-white');
+    });
+  });
+</script>

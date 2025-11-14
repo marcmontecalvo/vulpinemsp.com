@@ -2,12 +2,127 @@
 layout: layout.njk
 ---
 <section class="container my-5">
-  <article class="mx-auto" style="max-width: 850px;">
-    <h1 class="fw-bold mb-3">{{ title }}</h1>
-    <p class="text-muted">{{ date | fmtDate }}</p>
-    <hr>
-    <div class="markdown-content">
-      {{ content | safe }}
-    </div>
-  </article>
+  <div class="row">
+    <!-- Main Article -->
+    <article class="col-lg-8">
+      <h1 class="fw-bold mb-3">{{ title }}</h1>
+      <p class="text-muted">{{ date | fmtDate }}</p>
+      {% if tags %}
+      <div class="mb-3">
+        {% for tag in tags %}
+          {% if tag != "post" %}
+            <span class="badge bg-secondary me-1">#{{ tag }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+      <hr>
+
+      {% if cover %}
+      <figure class="figure w-100 my-4">
+        <img src="{{ cover.src }}" class="img-fluid rounded shadow-sm" alt="{{ cover.alt }}">
+        {% if cover.caption %}
+        <figcaption class="figure-caption text-center">{{ cover.caption }}</figcaption>
+        {% endif %}
+      </figure>
+      {% endif %}
+
+      <div class="markdown-content">
+        {{ content | safe }}
+      </div>
+
+      <!-- Previous/Next Navigation -->
+      <nav class="mt-5 pt-4 border-top">
+        <div class="row">
+          <div class="col-6">
+            {% set previousPost = collections.post | getPreviousCollectionItem(page) %}
+            {% if previousPost %}
+            <a href="{{ previousPost.url }}" class="text-decoration-none">
+              <small class="text-muted d-block">&larr; Previous</small>
+              <strong>{{ previousPost.data.title }}</strong>
+            </a>
+            {% endif %}
+          </div>
+          <div class="col-6 text-end">
+            {% set nextPost = collections.post | getNextCollectionItem(page) %}
+            {% if nextPost %}
+            <a href="{{ nextPost.url }}" class="text-decoration-none">
+              <small class="text-muted d-block">Next &rarr;</small>
+              <strong>{{ nextPost.data.title }}</strong>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+    </article>
+
+    <!-- Sidebar -->
+    <aside class="col-lg-4 mt-4 mt-lg-0">
+      <!-- Author Info -->
+      {% if author %}
+      <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+          <h5 class="card-title mb-2">About the Author</h5>
+          <p class="mb-0"><strong>{{ author }}</strong></p>
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Newest Posts -->
+      <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+          <h5 class="card-title mb-3">Latest Posts</h5>
+          <ul class="list-unstyled">
+            {% for post in collections.post | reverse | limit(5) %}
+            <li class="mb-3">
+              <a href="{{ post.url }}" class="text-decoration-none {% if post.url == page.url %}fw-bold{% endif %}">
+                <small class="text-muted d-block">{{ post.date | fmtDate }}</small>
+                {{ post.data.title }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Related Posts (by tags) -->
+      <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+          <h5 class="card-title mb-3">Related Posts</h5>
+          <ul class="list-unstyled">
+            {% set relatedPosts = [] %}
+            {% for post in collections.post %}
+              {% if post.url != page.url %}
+                {% for tag in tags %}
+                  {% if tag != "post" and post.data.tags and post.data.tags.includes(tag) %}
+                    {% set relatedPosts = (relatedPosts.push(post), relatedPosts) %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+            {% set uniqueRelated = relatedPosts | unique | limit(5) %}
+            {% if uniqueRelated.length > 0 %}
+              {% for post in uniqueRelated %}
+              <li class="mb-3">
+                <a href="{{ post.url }}" class="text-decoration-none">
+                  <small class="text-muted d-block">{{ post.date | fmtDate }}</small>
+                  {{ post.data.title }}
+                </a>
+              </li>
+              {% endfor %}
+            {% else %}
+              <li class="text-muted">No related posts found.</li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Back to Blog -->
+      <div class="card shadow-sm border-0">
+        <div class="card-body text-center">
+          <a href="/blog/" class="btn btn-outline-primary">View All Posts</a>
+        </div>
+      </div>
+    </aside>
+  </div>
 </section>

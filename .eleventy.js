@@ -1,11 +1,36 @@
 // ...top of file
 import { execSync } from 'node:child_process';
 import path from 'node:path';
+import fs from 'node:fs';
+import { glob } from 'glob';
+
 export default function (eleventyConfig) {
   // existing passthroughs
   eleventyConfig.addPassthroughCopy('src/assets');
   eleventyConfig.addPassthroughCopy({ 'src/public': '.' });
 
+  // Copy post assets to blog directory, stripping date prefixes from folder names
+  eleventyConfig.on('eleventy.before', async () => {
+    const assetFiles = await glob('src/posts/**/*.{png,jpg,jpeg,webp,gif,mp4,mov,pdf,zip}');
+    for (const srcPath of assetFiles) {
+      // Normalize path separators for cross-platform support
+      const normalizedPath = srcPath.replace(/\\/g, '/');
+      // Extract the folder structure: src/posts/2025-11-12-holiday-cyber-scams/image.png
+      const relativePath = normalizedPath.replace('src/posts/', '');
+      // Strip date prefix (YYYY-MM-DD-) from folder name
+      const destPath = relativePath.replace(/^\d{4}-\d{2}-\d{2}-/, '');
+      const outputPath = path.join('_site', 'blog', ...destPath.split('/'));
+
+      // Ensure output directory exists
+      const outputDir = path.dirname(outputPath);
+      if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+      }
+
+      // Copy the file
+      fs.copyFileSync(srcPath, outputPath);
+    }
+  });
   eleventyConfig.setDataDeepMerge(true);
 
   // existing date filter
@@ -17,6 +42,16 @@ export default function (eleventyConfig) {
     } catch {
       return String(value);
     }
+  });
+
+  // Add unique filter for arrays
+  eleventyConfig.addFilter('unique', function (array) {
+    return [...new Set(array)];
+  });
+
+  // Add limit filter for arrays
+  eleventyConfig.addFilter('limit', function (array, limit) {
+    return array.slice(0, limit);
   });
 
   // Git last-modified → ISO (as before)

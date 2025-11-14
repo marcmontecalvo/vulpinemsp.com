@@ -6,13 +6,13 @@ layout: layouts/post.njk
 permalink: blog/holiday-cyber-scams/
 blogUrl: https://vulpinemsp.com/blog/holiday-cyber-scams/
 summary: "Holiday-season cyber scams are scaling with AI and automation - here’s a practical checklist for small businesses to stay ahead."
-tags: ["msp","security","cyber-safety","holiday"]
+tags: ["post","msp","security","cyber-safety","holiday"]
 cover:
-  src: ./images/smishing_scam.png
+  src: ./smishing_scam.png
   alt: "Fake package delivery SMS cyber scam"
   focal: "center"
 assets:
-  - path: ./images/black_friday_deals.png
+  - path: ./black_friday_deals.png
     role: primary
     alt: "Laptop"
 campaign: holiday-cyber-scams

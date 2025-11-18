@@ -1,6 +1,6 @@
 ---
 title: "How to Prep Your Small Business for Holiday Cyber Scams"
-date: 2025-11-12
+date: 2025-11-18
 author: "Marc Montecalvo"
 layout: layouts/post.njk
 permalink: blog/holiday-cyber-scams/

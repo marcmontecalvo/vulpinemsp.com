@@ -135,6 +135,10 @@ Cloudflare build command
   `pnpm-lock.yaml`, Pages will default to npm. Unless you remove `package-lock.json` and switch
   Pages to pnpm, stick with `npx @11ty/eleventy`.
 
+## Repo Activity
+
+![Alt](https://repobeats.axiom.co/api/embed/733869c4233ad6676fab2559855d3a25b1533bf2.svg "Repobeats analytics image")
+
 ## License & Branding
 
 - Code: MIT license (see `LICENSE`).

@@ -4,7 +4,9 @@
 
 :root {
   /* Brand Colors */
-  --color-blue-dark: #1b2a41;
+  --color-blue-dark: #1e3a5f;
+  --color-blue-accent: #2563eb;
+  --color-blue-light: #dbeafe;
   --color-orange: #e27c25;
 
   /* Standard Warnings And Things */
@@ -13,13 +15,13 @@
   --color-danger: #ed254e;
 
   /* Neutrals */
-  --color-dark: #162136;
+  --color-dark: #1e3a5f;
   --color-light: #f9fafb;
   --color-gray: #949cac;
   --color-white: #fff;
 
   /* Optional extras */
-  --color-info: #30bcf2;
+  --color-info: #dbeafe;
   --color-warning: #f7b32b;
 }
 
@@ -84,31 +86,33 @@ footer {
   }
 }
 
-/* Icon row tweaks */
+/* Icon row tweaks - NOW BLUE */
 .icon-row .bi,
 .icon-row svg {
   font-size: 1.5rem;
-  color: var(--color-orange);
+  color: var(--color-blue-accent);
   margin-right: 0.5em;
   vertical-align: middle;
 }
 
-/* Service card icons */
+/* Service card icons - NOW BLUE */
 .service-icon {
   font-size: 2.2rem;
-  color: var(--color-orange);
+  color: var(--color-blue-accent);
 }
 
+/* Contact icons - NOW BLUE */
 .contact-icon {
-  color: var(--color-orange);
+  color: var(--color-blue-accent);
 }
 
+/* Other icons - NOW BLUE */
 .other-icon {
   font-size: 2.2rem;
-  color: var(--color-orange);
+  color: var(--color-blue-accent);
 }
 
-/* Stats card */
+/* Stat card */
 .stat-card {
   background: #fff;
   border-radius: 1rem;
@@ -118,6 +122,7 @@ footer {
   margin-bottom: 1rem;
 }
 
+/* Stat values - KEEP ORANGE for emphasis */
 .stat-card .stat-value {
   font-weight: 800;
   color: var(--color-orange);
@@ -133,8 +138,8 @@ footer {
 
 /* Contact form tweaks */
 #contactForm .form-control:focus {
-  box-shadow: 0 0 0 0.15rem rgba(16, 100, 234, 0.07);
-  border-color: var(--color-blue-dark);
+  box-shadow: 0 0 0 0.15rem rgba(37, 99, 235, 0.15);
+  border-color: var(--color-blue-accent);
 }
 
 .hero-content-box {
@@ -149,7 +154,7 @@ footer {
 }
 
 .hero-bg {
-  background: url('../../assets/images/tampa_skyline_digital.png') top center/cover no-repeat;
+  background: url('../../assets/images/hero.png') bottom right/cover no-repeat;
   position: relative;
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -217,7 +222,7 @@ footer {
 }
 
 .subtle-gradient {
-  background: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14% 98%));
+  background: linear-gradient(180deg, hsl(214, 95%, 93%), hsl(214, 65%, 96%));
 }
 
 .saira-semibold {
@@ -236,6 +241,7 @@ footer {
   font-variation-settings: 'wdth' 100;
 }
 
+/* BUTTONS - KEEP ORANGE */
 .btn-primary {
   --bs-btn-color: #000;
   --bs-btn-bg: #e27c25;
@@ -252,6 +258,7 @@ footer {
   --bs-btn-disabled-bg: #e27c25;
   --bs-btn-disabled-border-color: #e27c25;
 }
+
 
 .btn-outline-primary {
   --bs-btn-color: #e27c25;
@@ -270,31 +277,18 @@ footer {
   --bs-gradient: none;
 }
 
-.test {
-  /*RGBA(var(--bs-secondary-rgb)*/
-
-  --bs-primary-rgb: rgb(226, 124, 37);
-  --bs-secondary-rgb: rgb(62, 92, 118);
-  --bs-success-rgb: rgb(63, 163, 77);
-  --bs-info-rgb: rgb(168, 196, 224);
-  --bs-warning-rgb: rgb(247, 201, 72);
-  --bs-danger-rgb: rgb(229, 57, 53);
-  --bs-light-rgb: rgb(244, 244, 244);
-  --bs-dark-rgb: rgb(27, 42, 65);
-}
-
 /* Change open accordion background */
 .accordion-button:not(.collapsed) {
-  background-color: #e27c25;
+  background-color: var(--color-blue-accent);
   /* replace with your desired color */
-  color: #000;
+  color: #fff;
   /* adjust text color for contrast */
 }
 
 /* Optional: change the hover/focus color too */
 .accordion-button:not(.collapsed):focus,
 .accordion-button:not(.collapsed):hover {
-  background-color: #e27c25;
+  background-color: var(--color-blue-accent);
   /* slightly darker/lighter than above */
 }
 
@@ -321,14 +315,17 @@ footer {
 /* Add spacing for lists and list items in markdown content */
 .markdown-content ul,
 .markdown-content ol {
-  margin-bottom: 1.5rem; /* Add space below lists */
-  padding-left: 1.5rem; /* Standard indent for lists */
+  margin-bottom: 1.5rem;
+  /* Add space below lists */
+  padding-left: 1.5rem;
+  /* Standard indent for lists */
 }
 
 /* Ensure list items have proper vertical space */
 .markdown-content li {
-  margin-bottom: 0.6rem; 
-  line-height: 1.5; /* Improve line height for readability */
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+  /* Improve line height for readability */
 }
 
 /* Ensure paragraphs following lists also have space */
@@ -338,14 +335,17 @@ footer {
 
 /* Ensure the inline lists (like "What you should do" in the blog post) are tight */
 .markdown-content ul.mb-0 li {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .post-cover-image-fixed-height-cropped {
   width: 100%;
-  height: 400px; /* Adjust to your preferred height */
-  object-fit: cover; /* Crops the image to fill the space */
-  object-position: center; /* Centers the crop */
+  height: 400px;
+  /* Adjust to your preferred height */
+  object-fit: cover;
+  /* Crops the image to fill the space */
+  object-position: center;
+  /* Centers the crop */
 }
 
 .post-cover-image-max-height-responsive {
@@ -357,7 +357,8 @@ footer {
 
 .post-cover-image-aspect-ratio {
   width: 100%;
-  aspect-ratio: 16 / 9; /* or 21/9, 4/3, etc. */
+  aspect-ratio: 16 / 9;
+  /* or 21/9, 4/3, etc. */
   object-fit: cover;
   object-position: center;
 }
@@ -394,7 +395,8 @@ footer {
 .img-float-center {
   max-width: 100%;
   margin: 1rem 0;
-  clear: both; /* Prevent overlapping floats */
+  clear: both;
+  /* Prevent overlapping floats */
 }
 
 /* Mobile: stack images full-width */
@@ -440,4 +442,63 @@ footer {
     margin: 2rem auto;
     text-align: center;
   }
+}
+
+
+/* Always show icon in primary buttons */
+.btn-primary i,
+.btn-primary .bi {
+  opacity: 1 !important;
+  display: inline-block !important;
+  transition: transform 0.2s ease;
+}
+
+/* Optional: make arrow slide right on hover */
+.btn-primary:hover i,
+.btn-primary:hover .bi {
+  transform: translateX(4px);
+}
+
+/* ===========================================
+   TEXT COLOR UTILITIES - Medical Blue Theme
+   =========================================== */
+
+/* Dark navy for main headlines */
+.text-navy,
+.text-blue-dark {
+  color: var(--color-blue-dark) !important;
+}
+
+/* Accent blue for subheadlines and emphasis */
+.text-blue-accent {
+  color: var(--color-blue-accent) !important;
+}
+
+/* Keep orange available for specific emphasis */
+.text-orange {
+  color: var(--color-orange) !important;
+}
+
+/* Links - default to blue accent */
+a:not(.btn):not(.nav-link):not(.navbar-brand) {
+  color: var(--color-blue-accent);
+}
+
+a:not(.btn):not(.nav-link):not(.navbar-brand):hover {
+  color: var(--color-blue-dark);
+}
+
+.navbar,
+.navbar-dark,
+.bg-dark {
+  background-color: var(--color-blue-dark) !important;
+}
+
+.card-border-blue {
+  border-color: var(--color-blue-dark) !important;
+}
+
+
+.card-header-blue {
+  background-color: var(--color-blue-dark) !important;
 }

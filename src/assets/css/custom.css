@@ -25,10 +25,30 @@
   --color-warning: #f7b32b;
 }
 
+
+
+/* Footer background and button */
 footer {
   color: var(--color-light);
 }
 
+footer .btn-get-started {
+  background-color: var(--color-orange);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.5rem 1.25rem;
+  box-shadow: 0 2px 8px 0 rgba(253, 126, 20, 0.1);
+  letter-spacing: 0.03em;
+}
+
+footer .btn-get-started:hover,
+footer .btn-get-started:focus {
+  background-color: var(--color-orange);
+  color: #fff;
+}
+
+/* Navbar title and nav */
 .navbar-title {
   font-size: 2rem;
   /* or any value you want */
@@ -40,22 +60,7 @@ footer {
   /* or any value you want */
 }
 
-/* Navbar background and sticky */
-.navbar .btn-get-started {
-  background-color: var(--color-orange);
-  color: #fff;
-  font-weight: 600;
-  border-radius: 999px;
-  padding: 0.5rem 1.25rem;
-  box-shadow: 0 2px 8px 0 rgba(253, 126, 20, 0.1);
-  letter-spacing: 0.03em;
-}
 
-.navbar .btn-get-started:hover,
-.navbar .btn-get-started:focus {
-  background-color: var(--color-orange);
-  color: #fff;
-}
 
 /* Hero badge style */
 .badge-custom {
@@ -497,7 +502,6 @@ a:not(.btn):not(.nav-link):not(.navbar-brand):hover {
 .card-border-blue {
   border-color: var(--color-blue-dark) !important;
 }
-
 
 .card-header-blue {
   background-color: var(--color-blue-dark) !important;

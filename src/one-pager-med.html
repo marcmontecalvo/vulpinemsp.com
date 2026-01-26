@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulpine Solutions - MedFortress One-Pager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Brand Colors from Website */
+            --color-blue-dark: #1e3a5f;
+            --color-blue-accent: #2563eb;
+            --color-orange: #e27c25;
+
+            /* Gradient Background from Website */
+            --bg-gradient-start: hsl(214, 95%, 93%);
+            --bg-gradient-end: hsl(214, 65%, 96%);
+
+            --text-dark: #1e3a5f;
+            --text-body: #334155;
+            --text-light: #64748b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-body);
+            background: #525252;
+            /* Dark background for screen preview only */
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .accent-italic {
+            font-style: italic;
+        }
+
+        .qr-wrap {
+            transform: translateX(-12px);
+            /* nudge left - adjust to taste */
+            text-align: center;
+        }
+
+        /* Pricing callout */
+        .price-callout {
+            margin-top: 10px;
+            border-radius: 14px;
+            border: 2px solid rgba(226, 124, 37, .35);
+            background: rgba(226, 124, 37, .08);
+            padding: 10px;
+        }
+
+        .price-head {
+            font-weight: 950;
+            color: #6b2d00;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+            font-size: .92rem;
+            margin-bottom: 6px;
+        }
+
+        .price-head i {
+            color: var(--color-orange);
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 10px;
+            font-size: .90rem;
+            margin-bottom: 4px;
+            color: #1b3a60;
+        }
+
+        .price {
+            font-weight: 950;
+            color: var(--color-orange);
+            font-size: 1.14rem;
+        }
+
+        .price-sub {
+            margin-top: 6px;
+            font-size: .82rem;
+            color: #34506f;
+        }
+
+        /* Nav + footer bars */
+        .nav {
+            height: 0.78in;
+            padding: 0.16in 0.35in;
+            background: var(--color-blue-dark);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .15));
+            flex: 0 0 auto;
+        }
+
+        .nav-brand {
+            min-width: 0;
+        }
+
+        .nav-title {
+            font-weight: 700;
+            letter-spacing: .2px;
+            font-size: 1.5rem;
+            line-height: 1.05;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .nav-sub {
+            opacity: .9;
+            font-size: .86rem;
+            margin-top: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .nav-right {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            text-align: right;
+            font-size: .86rem;
+            white-space: nowrap;
+        }
+
+        .nav-link i {
+            margin-right: 6px;
+            opacity: .95;
+        }
+
+        .footer {
+            height: 0.46in;
+            padding: 0.10in 0.35in;
+            background: var(--color-blue-dark);
+            color: #fff;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: .78rem;
+        }
+
+        .footer-left {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+        }
+
+        .footer-strong {
+            font-weight: 900;
+        }
+
+        .footer-muted {
+            opacity: .9;
+        }
+
+        .footer-right {
+            opacity: .9;
+        }
+
+        /* --- Website Theme Components --- */
+
+        /* The "Card" Look */
+        .content-card {
+            background: white;
+            border-radius: 8px;
+            /* Slightly sharper radius like website */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            height: 100%;
+        }
+
+        /* The Gradient Background */
+        .gradient-bg {
+            background: linear-gradient(180deg, var(--bg-gradient-start), var(--bg-gradient-end));
+        }
+
+        /* Orange Buttons/Accents */
+        .bg-orange {
+            background-color: var(--color-orange) !important;
+            color: white;
+        }
+
+        .text-orange {
+            color: var(--color-orange) !important;
+        }
+
+        .border-orange {
+            border-color: var(--color-orange) !important;
+        }
+
+        /* Dark Blue Accents */
+        .bg-blue-dark {
+            background-color: var(--color-blue-dark) !important;
+            color: white;
+        }
+
+        .text-blue-dark {
+            color: var(--color-blue-dark) !important;
+        }
+
+        /* --- Custom Table Styling (Fixing the invisible text issue) --- */
+        .table-cost {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .table-cost thead th {
+            background-color: var(--color-blue-dark);
+            color: white;
+            padding: 12px 16px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-bottom: none;
+        }
+
+        .table-cost tbody td {
+            background-color: white;
+            color: var(--text-body);
+            /* Forces visible text */
+            padding: 12px 16px;
+            vertical-align: middle;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.9rem;
+        }
+
+        .table-cost tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* --- Sheet Layout --- */
+        .sheet {
+            background: white;
+            width: 8.5in;
+            height: 11in;
+            margin: 0 auto 20px auto;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            /* Prevent spillover */
+        }
+
+        .header-strip {
+            background-color: var(--color-blue-dark);
+            color: white;
+            padding: 0.75rem 0.5in;
+            border-bottom: 5px solid #e27c25;
+        }
+
+        /* --- Media Queries --- */
+        @media screen {
+            body {
+                padding: 20px;
+            }
+        }
+
+        @media print {
+
+            .sheet {
+                margin: 0;
+                box-shadow: none;
+                border: none;
+                page-break-after: always;
+            }
+
+            .sheet:last-child {
+                page-break-after: auto;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+
+
+            /* Force background graphics for the gradient */
+            .gradient-bg {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sheet" id="front-page">
+
+        <div class="header-strip d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="/assets/images/logo_250x250.webp" alt="Vulpine Fox Logo" style="height: 50px; width: auto;"
+                    class="me-3">
+                <div style="line-height: 1.1;">
+                    <div class="nav-title">Vulpine Solutions</div>
+                    <div class="nav-sub">Smart IT. <span class="accent-italic">Silent Security.</span></div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <div class="nav-link"><i class="bi bi-envelope"></i> marc.montecalvo@vulpinemsp.com</div>
+                <div class="nav-link"><i class="bi bi-globe2"></i> vulpinemsp.com</div>
+            </div>
+        </div>
+
+        <div class="gradient-bg flex-grow-1 d-flex flex-column"
+            style="padding-left: 0.5in !important; padding-right: 0.5in !important;">
+
+            <div class="text-center mb-4 mt-4">
+
+                <h2 class="text-blue-dark mb-3">Technology vendors treat healthcare
+                    like any other business.<span class="text-orange fw-bold"> It's not.</span></h2>
+                <p class="lead text-secondary mx-auto fw-medium" style="max-width: 90%;">
+                    We partner with independent medical practices to keep technology <span
+                        class="text-dark fw-bold">seemless, safe, and secure.</span>
+                </p>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-md-6">
+                    <div class="ps-2">
+                        <h5 class="fw-bold text-danger mb-3 d-flex align-items-center">
+                            <i class="bi bi-heart-pulse-fill me-2"></i>Symptoms of Poor IT Health
+                        </h5>
+                        <ul class="list-unstyled small mb-0">
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-x-circle-fill text-danger mt-1 me-2 fs-6"></i>
+                                <div>
+                                    <strong class="text-blue-dark">EHR interruptions:</strong> freezes, disconnects,
+                                    <br>add-ons failing mid-day
+                                </div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-x-circle-fill text-danger mt-1 me-2 fs-6"></i>
+                                <div>
+                                    <strong class="text-blue-dark">Slow computers:</strong> random issues that waste
+                                    staff time
+                                </div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-x-circle-fill text-danger mt-1 me-2 fs-6"></i>
+                                <div>
+                                    <strong class="text-blue-dark">Vendor ping-pong:</strong> EHR, internet provider,
+                                    copier, and IT blaming each other
+                                </div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-start">
+                                <i class="bi bi-x-circle-fill text-danger mt-1 me-2 fs-6"></i>
+                                <div>
+                                    <strong class="text-blue-dark">HIPAA anxiety:</strong> policies, training, “Are we
+                                    actually covered?”
+                                </div>
+                            </li>
+                            <li class="mb-0 d-flex align-items-start">
+                                <i class="bi bi-x-circle-fill text-danger mt-1 me-2 fs-6"></i>
+                                <div>
+                                    <strong class="text-blue-dark">Reactive support:</strong> IT only shows up when
+                                    something breaks
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="content-card p-4 d-flex flex-column justify-content-center">
+                        <h5 class="fw-bold mb-3 text-blue-dark">The Diagnosis</h5>
+                        <p class="text-secondary mb-3">
+                            Most practices are one click away from a data breach, HIPAA violation, or complete EHR
+                            shutdown.
+                        </p>
+                        <p class="fst-italic text-blue-dark mb-4 border-start border-4 border-orange ps-3">
+                            "When your EHR stops working, patient appointments back up and revenue stops."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 shadow-sm rounded">
+                <table class="table-cost">
+                    <thead>
+                        <tr>
+                            <th class="text-start">The Prognosis</th>
+                            <th class="">Typical Cost per instance</th>
+                            <th class="bg-success">Prevented with MedFortress</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold text-secondary">HIPAA Breach Notification</td>
+                            <td class="text-danger fw-bold ">$50,000 - $250,000+</td>
+                            <td class=""><i class="bi bi-check-circle-fill text-success me-2"></i>
+                                Compliance
+                                safeguards</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-secondary">Ransomware / Downtime</td>
+                            <td class="text-danger fw-bold ">$10,000 - $200,000+</td>
+                            <td class=""><i class="bi bi-check-circle-fill text-success me-2"></i>
+                                Backups &
+                                rapid recovery</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-secondary">Failed Audit / Violation</td>
+                            <td class="text-danger fw-bold ">$100 - $50,000+</td>
+                            <td class=""><i class="bi bi-check-circle-fill text-success me-2"></i>
+                                Documentation & Policies</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="price-callout">
+                <div class="d-flex align-items-center text-orange justify-content-center">
+                    <span class="fw-bold fs-5"><i class="bi bi-arrow-right-circle-fill fs-3 me-2"></i>The
+                        Prescription: MedFortress™</span>
+                </div>
+
+                <div class="price-row">
+                    <div><span class="price">$170</span> / workstation / month | <span class="price">$250</span>
+                        /
+                        server / month</div>
+                </div>
+                <div class="price-sub mb-2 text-center">
+                    <p class="mb-1"><span class="fw-bold text-blue-dark"><i
+                                class="text-blue-dark bi bi-tag fs-5 me-2"></i>Simple,
+                            predictable, all-inclusive pricing</span></p>
+                    <p class="mb-1">Includes Microsoft 365 Business Premium for all users - $26/user value.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sheet" id="back-page">
+        <div class="header-strip d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="/assets/images/logo_250x250.webp" alt="Vulpine Fox Logo" style="height: 50px; width: auto;"
+                    class="me-3">
+                <div style="line-height: 1.1;">
+                    <div class="nav-title">Vulpine Solutions</div>
+                    <div class="nav-sub">Smart IT. <span class="accent-italic">Silent Security.</span></div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <div class="nav-link"><i class="bi bi-envelope"></i> marc.montecalvo@vulpinemsp.com</div>
+                <div class="nav-link"><i class="bi bi-globe2"></i> vulpinemsp.com</div>
+            </div>
+        </div>
+
+        <div class="gradient-bg flex-grow-1 d-flex flex-column"
+            style="padding-left: 0.5in !important; padding-right: 0.5in !important;">
+            <div class="content-card p-4 mb-3 mt-3">
+                <div>
+                    <h5 class="fw-bold text-center text-blue-dark mb-3"><span class="text-orange">MedFortress™</span> -
+                        HIPAA-compliant managed IT for medical practices.</h5>
+                    <p class="text-secondary mx-auto" style="max-width: 80%;">Complete IT, security, and HIPAA
+                        compliance for medical practices. All-inclusive.
+                        No
+                        hidden
+                        fees. Everything in one monthly investment.</p>
+
+                </div>
+                <div class="row g-4">
+                    <div class="col-6">
+                        <div class="d-flex">
+                            <div class="me-3 text-orange fs-2"><i class="bi bi-headset"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1 fs-7 text-blue-dark">Unlimited support & Proactive
+                                    maintenance
+                                </h6>
+                                <p class="small text-secondary m-0 lh-sm">All IT issues are handled with unlimited
+                                    remote & on-site support to prevent repeat fires</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex">
+                            <div class="me-3 text-orange fs-2"><i class="bi bi-shield-check"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1 fs-7 text-blue-dark">HIPAA Compliance Built In</h6>
+                                <p class="small text-secondary m-0 lh-sm">Required safeguards put in place, staff
+                                    security awareness training, and
+                                    audit-ready documented compliance</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex">
+                            <div class="me-3 text-orange fs-2"><i class="bi bi-hdd-network"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1 fs-7 text-blue-dark">Advanced Cybersecurity & Encrypted Data
+                                    Backup Protection
+                                </h6>
+                                <p class="small text-secondary m-0 lh-sm">Continuous protection
+                                    against ransomware and data breaches and rapid recovery
+                                    for EHR and practice data</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex">
+                            <div class="me-3 text-orange fs-2"><i class="bi bi-people"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1 fs-7 text-blue-dark">Strategic Partnership</h6>
+                                <p class="small text-secondary m-0 lh-sm">We are an extension of your team,
+                                    focusing on your business goals - not just fixing computers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4 mb-3">
+                <div class="col-md-6">
+                    <div class="content-card p-3">
+                        <h6 class="fw-bold text-orange mb-3"><i class="bi bi-people-fill me-2"></i>Best fit for
+                            MedFortress</h6>
+                        <ul class="list-unstyled small mb-0 text-secondary">
+                            <li class="mb-2 d-flex"><i class="bi bi-check2 text-primary me-2 fw-bold"></i>
+                                Independent medical practices with 5-50 staff members</li>
+                            <li class="mb-2 d-flex"><i class="bi bi-check2 text-primary me-2 fw-bold"></i> Practices
+                                tired of reactive IT support and constant emergencies</li>
+                            <li class="mb-0 d-flex"><i class="bi bi-check2 text-primary me-2 fw-bold"></i> Healthcare
+                                providers who want a true technology partner, not just another vendor</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="content-card p-3">
+                        <h6 class="fw-bold text-orange mb-2"><i class="bi bi-file-earmark-medical-fill me-2"></i>A
+                            note
+                            on compliance</h6>
+                        <p class="small text-secondary mb-0">
+                            HIPAA is not a checkbox product. It is a set of habits and controls. MedFortress is
+                            designed to help you operate with consistent safeguards, training, and documented recovery.
+                        </p>
+                        <br>
+                        <p class="small text-blue-dark border-start border-4 border-orange ps-3 mb-0">
+                            <span class="fw-bold">Example:</span> <span class="fst-italic">Fast computer auto-lock &
+                                instant fingerprint unlock keeps ePHI protected without slowing down clinicians as they
+                                move room-to-room.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card p-4 mb-5 border-orange" style="border-left: 5px solid var(--color-orange);">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h5 class="fw-bold mb-1 text-blue-dark">Let's start with a 15 minute IT checkup.</h5>
+                        <p class="small text-secondary mb-4">We'll review your current setup and identify gaps. Like
+                            getting a second opinion, but for your technology. No pitch, no pressure, no cost, no
+                            obligation.</p>
+
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <img src="/assets/images/marc.jpg" alt="Marc Montecalvo" style="height: 90px;"
+                                    class="me-3">
+                            </div>
+                            <div style="line-height: 1.2;">
+                                <div class="fw-bold text-blue-dark">Marc Montecalvo</div>
+                                <div class="fs-7 text-secondary">Founder & Healthcare IT Specialist</div>
+                                <div class="fs-7 fw-bold mt-1">
+                                    <i class="bi bi-telephone-fill me-1 text-orange"></i> (813) 421-4443
+                                </div>
+                                <div class="fs-7 fw-bold mt-1">
+                                    <i class="bi bi-envelope-fill me-1 text-orange"></i>
+                                    marc.montecalvo@vulpinemsp.com
+                                </div>
+                                <div class="fs-7 fw-bold mt-1">
+                                    <i class="bi bi-geo-alt-fill me-1 text-orange"></i>
+                                    Tampa Bay Area
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-md-0 d-flex justify-content-center">
+                        <div class="qr-wrap bg-white d-inline-block">
+                            <img src="/assets/images/vulpine-it-checkup-qr.png" alt="Vulpine IT Checkup QR Code"
+                                style="width: 150px; height: 150px;">
+                            <span class="badge bg-blue-dark fw-normal rounded-pill px-3 mb-2 fs-5">Scan to
+                                schedule</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
